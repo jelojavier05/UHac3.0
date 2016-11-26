@@ -22,40 +22,59 @@
 <body id="ticketingBody">
 
 	<div style='position:absolute;z-index:0;left:0;top:0;width:100%;height:100%'>
-  		<img src="{!! URL::asset('../img/background1.jpg') !!}" style='width:100%;height:100%' alt='[]' />
+  		<img src="{!! URL::asset('../img/traffic_light.jpg') !!}" style='width:100%;height:100%' alt='[]' />
 	</div>
 
-	<div class="container caption center align">
+	<div class="container caption center">
       	<div class="row">
       		<br>
-        	<div class="col s12 m8 push-m6">
+        	<div class="col s12 m8 push-m4">
           		<div class="card" style="opacity: -10px;">
+                    
             		<div class="card-content white-text" style="border-radius: 100px;">
               			<div class="card-title">
-                            <img src="{!! URL::asset('../img/officer.png') !!}" style="height: 100px ; width: 100px ;">
-                            
+                            <div class="valign-wrapper black-text center">
+                                <div class="col s2">
+                                    <img src="{!! URL::asset('../img/officer.png') !!}" style="height: 100px ; width: 100px ;">
+                                </div>
+                                <div class="col s10">
+                                    <h3>VIOLATION TICKET</h3>
+                                </div>
+                            </div>
                         </div>
-	              			<div class="row black-text">
-							    <form class="col s12 black-text">
-							      	    <div class="row">
+	                    <div class="row black-text">
+				            <form class="col s12 black-text">
+							      	    <div class="valign-wrapper">
                                             <div class="input-field col s12">
                                             <input placeholder="N01-04-01***" id="licenseNumber" type="text" class="validate">
                                             <label for="license">License Number</label>
                                             </div>
-                                            <input type="button" class="btn" value="Find" id = 'btnFind'/>
+                                            <a class="btn" id = 'btnFind'><i class="material-icons">search</i></a>
+                                            
                                         </div>
                                         
                                         <div class="row">
                                             <div class="row">
+                                                <h5 class="black-text">Driver's Information</h5>
                                             
-                                                <label id = 'strName'></label>
-                                            </div>
-                                            <div class="row">
-                                                <label id = 'strDriverLicense'></label>
+                                                <label class = "col s4">Name: </label>
+                                                <label id = 'strName' class="col s8"></label>
                                             
-                                                <label id = 'strRestriction'></label>
+                                                <label class="col s4">License No.: </label>
                                             
-                                                <label id = 'dateExpiration'></label>
+                                                <label id = 'strLicenseNumber' class="col s8"></label>
+                                                
+                                                <label class="col s4">License Type: </label>
+                                            
+                                                <label id = 'strLicenseType' class="col s8"></label>
+                                                
+                                                <label class="col s4">Restrictions: </label>
+                                            
+                                                <label id = 'strRestriction' class="col s8"></label>
+                                                
+                                                <label class="col s4">Expiration Date: </label>
+                                            
+                                                <label id = 'dateExpiration' class="col s8"></label>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -69,11 +88,11 @@
                                             </div>
                                         </div>
 							    </form>
-						    </div>
+				        </div>
             		</div>
             		<div class="card-action center">
-	            		<a class="waves-effect waves-light btn red lighten-1"><i class="material-icons left">cancel</i>cancel</a>
-						<a class="waves-effect waves-light btn green lighten-1" id = 'btnSubmit'><i class="material-icons right">done</i>submit</a>
+	            		<a class="waves-effect waves-light btn blue lighten-1"><i class="material-icons left">cancel</i>back</a>
+						<a class="waves-effect waves-light btn green lighten-1" id = 'btnSubmit'><i class="material-icons left">done</i>submit</a>
             		</div>
           		</div>
         	</div>
