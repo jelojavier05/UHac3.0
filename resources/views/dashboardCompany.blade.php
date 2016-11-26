@@ -154,9 +154,6 @@ $(document).ready(function(){
 
     });//ajax
   });
-});
-
-$(document).ready(function(){
   function refreshTable(){
     $.ajax({
       type: "GET",

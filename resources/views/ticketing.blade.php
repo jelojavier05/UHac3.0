@@ -166,7 +166,7 @@ $(document).ready(function(){
                 arrViolation: arrViolation
             },
             success: function(data){
-                confirm('success');
+                window.location.href = '{{ URL::to("/summary") }}';
             },
             error: function(data){
                 var toastContent = $('<span>Error Occured. </span>');

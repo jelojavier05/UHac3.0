@@ -49,10 +49,6 @@
                                                 
                                         <label class="col s6 m2">Enforcer Name:</label>
                                         <label id="EnforcerName" class="col s6 m2">Dalisay, Kardo</label>
-                                                
-                                        <label class="col s2 m2">Address:</label>
-                                            
-                                        <label id="DriverRestriction" class="col s10 m10">BLAH BLAH BLAH BLAH</label>
                                             
                                       </div>
                                         
@@ -126,6 +122,7 @@
           },
           success: function(data){
             confirm('success');
+            window.location.href = '{{ URL::to("/dashboardEnforcer") }}';
           },
           error: function(data){
             var toastContent = $('<span>Error Occured. </span>');
