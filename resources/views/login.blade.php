@@ -34,18 +34,13 @@
               			<span class="card-title"><img src="{!! URL::asset('../img/car.png') !!}" style="height: 100px ; width: 100px ;"></span>
                             <h4 class="black-text">Sign in to Holeh as</h4>
                             <div class="row">
-                                <p>
+                                
                                   <input name="group1" type="radio" id="company" />
                                   <label for="company">Company</label>
-                                </p>
-                                <p>
                                   <input name="group1" type="radio" id="enforcer" />
                                   <label for="enforcer">Enforcer</label>
-                                </p>
-                                <p>
                                   <input class="with-gap" name="group1" type="radio" id="driver"  />
                                   <label for="driver">Driver</label>
-                                </p>
                             </div>
 	              			<div class="row black-text">
                                 <div class="container">
