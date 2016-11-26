@@ -32,7 +32,7 @@
                   		</li>
                 	</ul>
                 	<div class="card-action center">
-						<a class="waves-effect waves-light btn yellow lighten-1 activator"><i class="material-icons left">edit</i>Edit Profile</a>
+						<a class="waves-effect waves-light btn yellow lighten-1 activator black-text"><i class="material-icons left">edit</i>Edit Profile</a>
                 	</div>
     			</div>
     			<div class="card-reveal">
