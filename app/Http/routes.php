@@ -22,6 +22,7 @@ Route::post('/driver/update', 'DriverController@updateDriver');
 Route::post('/signup/store', 'SignUpController@store');
 
 Route::get('/ticketing', 'TicketController@index');
+Route::get('/summary', 'SummaryController@index');
 Route::get('/test', 'TestController@index');
 
 
