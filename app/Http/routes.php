@@ -36,20 +36,5 @@ Route::get('/test', 'TestController@index');
 
 Route::get('/payment', 'PaymentController@index');
 Route::post('/payment/add', 'PaymentController@transact');
-<<<<<<< HEAD
 
-=======
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
-=======
->>>>>>> Stashed changes
-
->>>>>>> origin/master
->>>>>>> origin/master
 Route::get('/driver', 'DriverController@getDriver');
