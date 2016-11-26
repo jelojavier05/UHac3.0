@@ -22,3 +22,6 @@ Route::post('/driver/update', 'DriverController@updateDriver');
 Route::post('/signup/store', 'SignUpController@store');
 
 Route::get('/test', 'TestController@index');
+
+Route::get('/payment', 'PaymentController@index');
+Route::post('/payment/add', 'PaymentController@transact');
