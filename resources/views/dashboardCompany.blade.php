@@ -67,37 +67,137 @@
     </div>
   </div>
 
-            <div class="row">
-                <div class="col s12 m8" style="margin-top:">
-                    <table class="striped white" style="border-radius:10px;" id="dataTable">
+<div class="row">
+  <div class="col s12 m8" style="margin-top:">
+    <table class="striped white" style="border-radius:10px;" id="dataTable">
+      <thead>
+        <tr>
+          <th style="width:100px;" class="green darken-3 white-text">Ticket No</th>
+          <th style="width:150px;" class="green darken-3 white-text">Arresting Officer</th>
+          <th style="width:150px;" class="green darken-3 white-text">Violator</th>
+          <th class="blue darken-3 white-text">License No</th>
+          <th class="blue darken-3 white-text">Date</th>
+          <th class="blue darken-3 white-text">Status</th>
+          <th class="blue darken-3 white-text">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Feb. 11, 2014</td>
+          <td>Tolentino</td>
+          <td>Escala</td>
+          <td>00002</td>
+          <td>Nakaw na tingin</td>
+          <td>Death</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-                        <thead>
-                            <tr>
-                                <th style="width:100px;" class="green darken-3 white-text">Ticket No</th>
-                                <th style="width:150px;" class="green darken-3 white-text">Arresting Officer</th>
-								<th style="width:150px;" class="green darken-3 white-text">Violator</th>
-                                <th class="blue darken-3 white-text">License No</th>
-                                <th class="blue darken-3 white-text">Date</th>
-                                <th class="blue darken-3 white-text">Status</th>
-                                <th class="blue darken-3 white-text">Action</th>
-                                
-                            </tr>
-                        </thead>
 
-                        <tbody>
-                        	<tr>
-                        		<td>Feb. 11, 2014</td>
-                        		<td>Tolentino</td>
-                        		<td>Escala</td>
-                        		<td>00002</td>
-                        		<td>Nakaw na tingin</td>
-                        		<td>Death</td>
-                        		<td><a href="" class="btn">Test</a></td>
-                        	</tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#dataTable').on('click', '.btnPay',function(){
+    var id = this.id;
+    $.ajax({
+
+      type: "POST",
+      url: "{{action('dashboardCompanyController@paymentInCompany')}}",
+      beforeSend: function (xhr) {
+        var token = $('meta[name="csrf_token"]').attr('content');
+
+        if (token) {
+          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+        }
+      },
+      data: {
+        ticketID: id
+
+      },
+      success: function(data) {
+        confirm('Payment Successful.');
+        refreshTable();
+      },
+      error: function(data) {
+        confirm('Error');
+      }
+
+    });//ajax
+  });
+
+  $('#dataTable').on('click', '.btnClaim',function(){
+    var id = this.id;
+    $.ajax({
+
+      type: "POST",
+      url: "{{action('dashboardCompanyController@claimInCompany')}}",
+      beforeSend: function (xhr) {
+        var token = $('meta[name="csrf_token"]').attr('content');
+
+        if (token) {
+          return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+        }
+      },
+      data: {
+        ticketID: id
+
+      },
+      success: function(data) {
+        confirm('License Claimed.');
+        refreshTable();
+      },
+      error: function(data) {
+        confirm('Error');
+      }
+
+    });//ajax
+  });
+  function refreshTable(){
+    $.ajax({
+      type: "GET",
+      url: "{{action('dashboardCompanyController@getMunicipalityTickets')}}",
+      success: function(data){
+
+        var table = $('#dataTable').DataTable();
+        table.clear().draw();
+        $.each(data, function(index, value) {
+          var status;
+          var button = ''; 
+          if (value.blStatus == 0){
+            status = 'Unpaid';
+            button = '<a class="btn red btnPay" id = ' + value.intVHId  +'>Pay</a>';
+          }else if (value.blStatus == 1){
+            status = 'Paid';
+            button = '<a class="btn blue btnClaim" id = ' + value.intVHId  +'>Claim</a>';
+          }else if(value.blStatus == 2){
+            status = 'Claimed';
+            button = '<a class="btn green btnDetails" id = ' + value.intVHId  +'>Claimed</a>';
+          }
+          table.row.add([
+            value.intVHId,
+            value.strEnfoFname + ' ' + value.strEnfoLname,
+            value.strDrivFname + ' ' + value.strDrivLname,
+            value.strDrivLicense,
+            value.datToday,
+            status,
+            button
+          ]).draw();
+        });//foreach 
+      },
+      error: function(data){
+        var toastContent = $('<span>Error Database.</span>');
+        Materialize.toast(toastContent, 1500,'red', 'edit');
+      }
+    });//get municpality ticketf
+  }
+
+  refreshTable();
+});
+
+
+</script>
 
 <script type="text/javascript">
  $("#dataTable").DataTable({

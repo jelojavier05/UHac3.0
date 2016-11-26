@@ -9,9 +9,14 @@
 	<link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/materialize.min.css') !!}">
 	<link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/styles.css') !!}">
 	<script type="text/javascript" src="{!! URL::asset('../js/jquery-2.1.1.min.js') !!}"></script>
-	<script type="text/javascript" src="{!! URL::asset('../js/init.js') !!}"></script>
 	<script type="text/javascript" src="{!! URL::asset('../js/materialize.min.js') !!}"></script>
-	<script type="text/javascript" src="{!! URL::asset('../js/materialize.js') !!}"></script>
+    <script type="text/javascript" src="{!! URL::asset('../js/init.js') !!}"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.slider').slider({full_width: true});
+          });
+    </script>
 </head>
 <body>
 
