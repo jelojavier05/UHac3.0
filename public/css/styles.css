@@ -1,3 +1,7 @@
-.signupBody{
-	background-image: url("{!! URL::asset('../img/signupbg.png') !!}");
+.card {
+  display: block;
+  float: left;
+  position: relative;
+  width: 20%;
+  min-width: 128px;
 }

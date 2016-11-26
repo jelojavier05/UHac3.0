@@ -21,7 +21,7 @@
                         </div>
                         <div class="col s9">
                             <br>
-                            <p><h5 class="center">Ricardo Dalisay</h5></p>
+                            <p><h5 class="center">{{$data->strEnfoFname}} {{$data->strEnfoLname}}</h5></p>
                                <h6 class="center">Pasig City</h6>
                             <br>
                         </div>

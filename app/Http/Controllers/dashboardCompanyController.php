@@ -23,7 +23,6 @@ class dashboardCompanyController extends Controller
 
     public function getMunicipalityTickets(Request $request){
         $municipalityID = $request->session()->get('id');
-        $municipalityID = 1;
 
         $tickets = DB::table('tblMunicipal')
             ->join('tblEnforcer', 'tblEnforcer.intEnfoMunicipal', '=', 'tblMunicipal.intMunicipalId')
