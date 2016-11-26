@@ -31,24 +31,32 @@
         	<div class="col s12 m8 push-m6">
           		<div class="card" style="opacity: -10px;">
             		<div class="card-content white-text" style="border-radius: 100px;">
-              			<span class="card-title"><img src="{!! URL::asset('../img/car.png') !!}" style="height: 100px ; width: 100px ;"></span>
+              			<div class="card-title">
+                            <img src="{!! URL::asset('../img/officer.png') !!}" style="height: 100px ; width: 100px ;">
+                            
+                        </div>
 	              			<div class="row black-text">
 							    <form class="col s12 black-text">
-							      	<div class="row">
-                                        <div class="row">
+							      	    <div class="row">
                                             <div class="input-field col s12">
-                                                <input placeholder="N01-04-01***" id="licenseNumber" type="text" class="validate">
-                                                <label for="license">License Number</label>
-                                                <input type="button" class="btn" value="Find" />
+                                            <input placeholder="N01-04-01***" id="licenseNumber" type="text" class="validate">
+                                            <label for="license">License Number</label>
                                             </div>
+                                            <input type="button" class="btn" value="Find" />
                                         </div>
+                                        
                                         <div class="row">
-                                            <div class="input-field col s12">
+                                            <div class="row">
                                                 <label name="DriverLicenseNo">N01-04-01***</label>
+                                            
                                                 <label name="DriverName">Dela Cruz Juan</label>
+                                            </div>
+                                            <div class="row">
                                                 <label name="DriverLicenseType">License Type</label>
+                                            
                                                 <label name="DriverRestriction">Restriction</label>
-                                                <label name="DriverLicenseExpiration"></label>
+                                            
+                                                <label name="DriverLicenseExpiration">2017-11-05</label>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -63,10 +71,9 @@
                                                     <option value="7">Violation 7</option>
                                                     <option value="8">Violation 8</option>
                                                 </select>
-                                                    <label>Violations</label>
+                                                <label>Violations</label>
                                             </div>
                                         </div>
-							      	</div>
 							    </form>
 						    </div>
             		</div>
