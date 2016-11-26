@@ -32,7 +32,7 @@
           		<div class="card" style="opacity: -10px;">
             		<div class="card-content white-text" style="border-radius: 100px;">
               			<span class="card-title"><img src="{!! URL::asset('../img/car.png') !!}" style="height: 100px ; width: 100px ;"></span>
-                            <h4 class="black-text">Sign in to Holeh</h4>
+                            <h4 class="black-text">Sign in to Hooleh</h4>
 	              			<div class="row black-text">
                                 <div class="container">
                                     <form class="col s12 black-text">
