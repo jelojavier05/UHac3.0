@@ -12,25 +12,27 @@
 	<script type="text/javascript" src="{!! URL::asset('../js/init.js') !!}"></script>
 	<script type="text/javascript" src="{!! URL::asset('../js/materialize.min.js') !!}"></script>
 	<script type="text/javascript" src="{!! URL::asset('../js/materialize.js') !!}"></script>
+    
 
 @section('navigation')
 <!-- Dropdown Structure -->
-<ul id="LoginDropdown" class="dropdown-content">
-  <li><a href="#!"><img src="{!! URL::asset('../img/D.png') !!}" style="height: 50px;"></a></li>
-  <li><a href="#!"><img src="{!! URL::asset('../img/E.png') !!}" style="height: 50px;"></a></li>
-  <li><a href="#!"><img src="{!! URL::asset('../img/C.png') !!}" style="height: 50px;"></a></li>
-  <li class="divider"></li>
-</ul>
 <div class="navbar-fixed">
 <nav>
-  <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">Logo</a>
-    <ul class="right hide-on-med-and-down">
-      <li><a class='dropdown-button' href='#' data-activates='LoginDropdown' style="width: 200px;">Login</a></li>
-      <li><a href="">Signup</a></li>
-    </ul>
-  </div>
-</nav>
+    <div class="nav-wrapper black">
+      <a href="#!" class="brand-logo center ">HULE</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="mobile.html">Sign Up</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        
+        <li><a href="#!"><img src="{!! URL::asset('../img/C.png') !!}" class="responsive-img"></a></li>
+        <li><a href="#!"><img src="{!! URL::asset('../img/E.png') !!}" class="responsive-img"></a></li>
+        <li><a href="#!"><img src="{!! URL::asset('../img/D.png') !!}" class="responsive-img"></a></li>
+        <li><a href="signup.blade.php">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
 </div>
 
 @endsection
@@ -40,20 +42,50 @@
   <div class="fullscreen slider">
     <ul class="slides">
       <li>
-        <img src="{!! URL::asset('../img/background2.jpg') !!}"> 
-        <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        <img src="{!! URL::asset('../img/background3.jpg') !!}"> 
+        <div class="caption Left-align">
+          <h3>Hule!</h3>
+          <h5 class="light grey-text text-lighten-3">pero di Kulong</h5>
         </div>
       </li>
       <li>
         <img src="{!! URL::asset('../img/background1.jpg') !!}">
-        <div class="caption left-align">
-          <h3>Left Aligned Caption</h3>
+        <div class="caption center-align">
+          <h3>Center Aligned Caption</h3>
           <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
         </div>
       </li>
     </ul>
+  </div>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <div class="row" style="position:absolute;z-index:100000">
+        <div class="container">
+            <div class="col m6 hide-on-small-only">
+                <div class="row">
+                    <a href="#!"><img src="{!! URL::asset('../img/C.png') !!}" class="responsive-img"></a>
+                </div>
+                <div class="row">
+                    <div class = "col m6">
+                        <a href="#!"><img src="{!! URL::asset('../img/E.png') !!}" class="responsive-img"></a>
+                    </div>
+                    <div class= "col m6">
+                        <a href="#!"><img src="{!! URL::asset('../img/D.png') !!}" class="responsive-img"></a>
+                    </div>
+                </div>
+        </div>
+    </div>
+        
+    <div id="modal1" class="modal" style="z-index:1000000;">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
   </div>
 
   <script type="text/javascript">
