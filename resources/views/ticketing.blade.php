@@ -124,6 +124,7 @@ $(document).ready(function(){
                     });
                     $('#strRestriction').text(strRestriction);
                     $('#dateExpiration').text(data.strDate);
+                    $('#strLicenseType').text(data.strLicenseType);
                 }else{
                     confirm('No Existing record.');
                 }                    

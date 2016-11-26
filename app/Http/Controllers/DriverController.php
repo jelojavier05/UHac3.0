@@ -22,7 +22,8 @@ class DriverController extends Controller
 
         $licenseNumber = Input::get('strLicenseNumber');
         $driver = DB::table('tblDriver')
-            ->select('strDrivFname', 'strDrivLname', 'datExpiration', 'strDrivLicense')
+            ->join('tblLicenseType', 'tblLicenseType.intLicenseId','=' ,'tblDriver.intLicenseType')
+            ->select('strDrivFname', 'strDrivLname', 'datExpiration', 'strDrivLicense', 'strLicenseType')
             ->where('strDrivLicense', $licenseNumber)
             ->first();
         if (is_null($driver)){
