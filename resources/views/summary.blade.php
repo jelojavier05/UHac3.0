@@ -29,17 +29,18 @@
       	<div class="row">
         	<div class="col s12 m8 push-m6">
           		<div class="card" style="opacity: -10px;">
-            		<div class="card-content white-text" style="border-radius: 100px;">
-              			<div class="card-title">
+                    <div class="card-title">
                             <div class="valign-wrapper center-align">
                                 <div class="col s3">
-                                <img src="{!! URL::asset('../img/officer.png') !!}" class="responsive-img"/>
+                                    <img src="{!! URL::asset('../img/officer.png') !!}" class="responsive-img"/>
                                 </div>
                                 <div class="col s9">
-                                    <h2 class="black-text">VIOLATION SUMMARY</h2>
+                                    <h4 class="black-text">VIOLATION SUMMARY</h4>
                                 </div>
                             </div>
                         </div>
+            		<div class="card-content white-text" style="border-radius: 100px;">
+              			
 	              			<div class="row black-text">
 							    <form class="col s12 black-text">
 							      	  <div class="row">
@@ -108,7 +109,7 @@
 						    </div>
             		</div>
             		<div class="card-action center">
-	            		<a class="waves-effect waves-light btn red lighten-1"><i class="material-icons left">back</i>back</a>
+	            		<a class="waves-effect waves-light btn red lighten-1"><i class="material-icons left">cancel</i>back</a>
 						<a class="waves-effect waves-light btn green lighten-1" id = 'btnSubmit'><i class="material-icons right">done</i>submit</a>
             		</div>
           		</div>
