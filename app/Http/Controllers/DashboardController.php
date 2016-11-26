@@ -31,6 +31,20 @@ class DashboardController extends Controller
                     ON e.intEnfoMunicipal = m.intMunicipalId
                 WHERE d.strDrivLicense = "D06-11-009386" AND vh.blStatus = 0');
 
+         $ViolationDetails2 = DB::select('SELECT d.strDrivLicense, d.strDrivAccNo, d.strDrivUname, m.strMunicName, r.strRuleDesc, r.dblRuleFine, vh.blStatus, e.intEnfoId, CONCAT(e.strEnfoFname," ",e.strEnfoLname) AS EnfoFullName, vh.datToday
+            FROM tblViolationHeader AS vh
+                INNER JOIN tblViolationDetail AS vd
+                    ON vh.intVHid = vd.intVDVH
+                INNER JOIN tblDriver AS d
+                    ON vh.strVHDriver = d.strDrivLicense
+                INNER JOIN tblRules AS r
+                    ON vd.intDVRules = r.intRulesId
+                INNER JOIN tblEnforcer AS e
+                    ON vh.intVHEnfoId = e.intEnfoId
+                INNER JOIN tblMunicipal AS m
+                    ON e.intEnfoMunicipal = m.intMunicipalId
+                WHERE d.strDrivLicense = "D06-11-009386" AND vh.blStatus = 1');
+
         $DriverDetails = DB::select('SELECT CONCAT(d.strDrivFname," ",d.strDrivLname) AS "FullName", d.strDrivLicense, d.datExpiration, lt.strLicenseType 
                 FROM tblDriver AS d
                     INNER JOIN tblLicenseType AS lt
@@ -51,6 +65,19 @@ class DashboardController extends Controller
             $strEnfoFullName = $value->EnfoFullName;
             $datViolationDay = $value->datToday;
             $intVioCounter++;
+            break;
+        }
+
+        $strMunicipal2 = "";
+        $strEnfoFullName2 = "";
+        $datViolationDay2 = "";
+        $intVioCounter2 = 0;
+
+        foreach ($ViolationDetails2 as $value2) {
+            $strMunicipal2 = $value2->strMunicName;
+            $strEnfoFullName2 = $value2->EnfoFullName;
+            $datViolationDay2 = $value2->datToday;
+            $intVioCounter2++;
             break;
         }
         return view('dashboard', ['FullName' => $strFullName, 'License' => $strLicense, 'LicenseType' => $strLicenseType, 'datExpiration' => $datExpiration, 'datViolationDay' => $datViolationDay, 'strMunicipal' => $strMunicipal, 'strEnfoFullName' => $strEnfoFullName, 'intVioCounter' => $intVioCounter, 'ViolationDetails' => $ViolationDetails]);

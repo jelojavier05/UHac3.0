@@ -82,14 +82,18 @@
 					<div class="row">
 						<div class="col s12">
 							<ul class="collection with-header">
-								<li class="collection-header"><h5 class="center">Violation</h5></li>
+								<li class="collection-header"><h5  class="center">Violation</h5></li>
 <<<<<<< HEAD
+								=======
+								<<<<<<< HEAD
 								@if($intVioCounter > 0)
 						      	<li class="collection-item">{{$datViolationDay}}</li>
 						      	<li class="collection-item">Officer: {{$strEnfoFullName}}</li>
 						      	<li class="collection-item">Location: {{$strMunicipal}}</li>
+						      	=======
 						      	@else
 						      	<li class="collection-item center">You don't have any violation!</li>
+						      	=======
 						      	@endif
 =======
 						      	<li class="collection-item">Jan. 20, 2016</li>
@@ -97,14 +101,26 @@
 						      	<li class="collection-item">Manila City Hall</li>
 >>>>>>> origin/master
 						    </ul>
+
+						      	=======
+
 							<ul class="collapsible" data-collapsible="accordion">
+
+								=======
+
+
 								@foreach($ViolationDetails AS $detail)
+								=======
 								<li>
 								  <div class="collapsible-header"><span><h6 class="right">{{$detail->dblRuleFine}}</h6></span>{{$detail->strRuleDesc}}</div>
 								  <div class="collapsible-body white"><p>Details.</p>
 								  </div>
 								</li>
+								=======
 								@endforeach
+
+=======
+
 							 </ul>
 							 <h6 class="right">Total Amount:</h6>
 						</div>
