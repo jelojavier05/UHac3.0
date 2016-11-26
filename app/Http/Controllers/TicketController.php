@@ -32,6 +32,7 @@ class TicketController extends Controller
      */
     public function create(Request $request)
     {
+        // dd($request->arrViolation);
         $request->session()->put('licenseNumber', $request->licenseNumber);
         $request->session()->put('arrViolation', $request->arrViolation);
     }
@@ -44,7 +45,22 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $licenseNumber = $request->session()->get('licenseNumber');
+        $arrViolation = $request->session()->get('arrViolation');
+        $enforcerID = $request->session()->get('id');
+        $enforcerID = 1;
+
+        $violationHeaderID = DB::table('tblViolationHeader')->insertGetId([
+            'intVHEnfoId' => $enforcerID,
+            'strVHDriver' => $licenseNumber
+        ]);
+
+        foreach($arrViolation as $value){
+            DB::table('tblViolationDetail')->insert([
+                'intVDVH' => $violationHeaderID,
+                'intDVRules' => $value
+            ]);
+        }
     }
 
     /**

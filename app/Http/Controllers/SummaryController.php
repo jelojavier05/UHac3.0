@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use DB;
+use Carbon\Carbon;
 class SummaryController extends Controller
 {
     /**
@@ -14,9 +15,29 @@ class SummaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('summary');
+        $summary = new \stdClass();
+        $driverData = DB::table('tblDriver')
+            ->join('tblLicenseType', 'tblLicenseType.intLicenseId', '=', 'tblDriver.intLicenseType')
+            ->select('tblDriver.*', 'tblLicenseType.strLicenseType')
+            ->where('strDrivLicense', $request->session()->get('licenseNumber'))
+            ->first();
+        $driverData->strDate = (new Carbon($driverData->datExpiration))->toFormattedDateString();
+        $summary->driverData = $driverData;
+        $arrViolation = array();
+        foreach($request->session()->get('arrViolation') as $value){
+            $violation = DB::table('tblRules')
+                ->select('*')
+                ->where('intRulesId', $value)
+                ->first();
+
+            array_push($arrViolation, $violation);
+        }
+        $summary->arrViolation = $arrViolation;
+
+        return view('summary')
+            ->with('summary', $summary);
     }
 
     /**

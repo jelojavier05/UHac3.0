@@ -3,19 +3,19 @@
 <head>
 
 	<meta charset="utf-8">
-	<meta http-equiv="Content-type" content="text/html; charset=UTF-8 ">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-	<meta name="csrf_token" content="{{ csrf_token() }}" />
-	<title></title>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8 ">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="csrf_token" content="{{ csrf_token() }}" />
+    <title></title>
 
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/materialize.min.css') !!}">
-	<link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/styles.css') !!}">
-	<script type="text/javascript" src="{!! URL::asset('../js/jquery-2.1.1.min.js') !!}"></script>
-	<script type="text/javascript" src="{!! URL::asset('../js/init.js') !!}"></script>
-	<script type="text/javascript" src="{!! URL::asset('../js/materialize.min.js') !!}"></script>
-	<script type="text/javascript" src="{!! URL::asset('../js/materialize.js') !!}"></script>
+    <link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/materialize.min.css') !!}">
+    <link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/styles.css') !!}">
+    <script type="text/javascript" src="{!! URL::asset('../js/jquery-2.1.1.min.js') !!}"></script>
+    <script type="text/javascript" src="{!! URL::asset('../js/init.js') !!}"></script>
+    <script type="text/javascript" src="{!! URL::asset('../js/materialize.min.js') !!}"></script>
+    <script type="text/javascript" src="{!! URL::asset('../js/materialize.js') !!}"></script>
 
 </head>
 
@@ -81,7 +81,7 @@
                                             <div class="input-field col s12">
                                                 <select multiple id = 'violations'>
                                                     @foreach($rules as $value)
-                                                    <option value="{{$value->intRulesId}}">{{$value->strRuleDesc}}</option>
+                                                    <option value = '{{$value->intRulesId}}'>{{$value->strRuleDesc}}</option>
                                                     @endforeach
                                                 </select>
                                                 <label>Violations</label>
@@ -138,10 +138,13 @@ $(document).ready(function(){
     });
 
     $('#btnSubmit').click(function(){
-        var arrViolation = $('#violations').val();
+        var arrViolation = $('#violations').val(); 
+        var licenseNumber = $('#licenseNumber').val();
+        console.log(arrViolation);
+
         $.ajax({
             type: "POST",
-            url: "{{action('DriverController@store')}}",
+            url: "{{action('TicketController@create')}}",
             beforeSend: function (xhr) {
                 var token = $('meta[name="csrf_token"]').attr('content');
 
