@@ -16,6 +16,8 @@
 	<script type="text/javascript" src="{!! URL::asset('../js/materialize.js') !!}"></script>
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  	<script src="{!! URL::asset('../js/datatable.js') !!}"></script>
+  	<script src="{!! URL::asset('../js/jquery.dataTables.min.js') !!}"></script>
 </head>
 <body>
 
