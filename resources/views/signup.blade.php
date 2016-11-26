@@ -74,15 +74,15 @@
 							          		<label for="middle_name">Middle Name</label>
 							        	</div>
 							        	<div class="input-field col s4">
-							          		<input placeholder="Dela" id="accountNumber" type="text" class="validate">
+							          		<input placeholder="0975321" id="accountNumber" type="text" class="validate">
 							          		<label for="middle_name">Account Number</label>
 							        	</div>
-										<div class="input-field col s6">
+										<div class="input-field col s4">
 							          		<input placeholder="UhacDelaCruz" id="userName" type="text" class="validate">
 							          		<label for="user_name">Username</label>
 							        	</div>
-										<div class="input-field col s6">
-							          		<input id="password" type="password" class="validate">
+										<div class="input-field col s4">
+							          		<input placeholder="*******" id="password" type="password" class="validate">
 							          		<label for="password">Password</label>
 							        	</div>
 							      	</div>

@@ -15,13 +15,25 @@ Route::get('/', 'LoginController@index');
 Route::get('/signup', 'SignUpController@index');
 Route::get('/profile', 'LogProfileController@index');
 Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboardEnforcer', 'dashboardEnforcerController@index');
+Route::get('/dashboardCompany', 'dashboardCompanyController@index');
 
 Route::get('/signup', 'SignUpController@index');
 Route::post('/signup/store', 'DriverController@store');
 Route::post('/driver/update', 'DriverController@updateDriver');
 Route::post('/signup/store', 'SignUpController@store');
 
+Route::get('/ticketing', 'TicketController@index');
+Route::post('/ticketing/create', 'TicketController@create');
+Route::post('/ticket/store', 'TicketController@store');
+
+Route::get('/summary', 'SummaryController@index');
 Route::get('/test', 'TestController@index');
 
+<<<<<<< HEAD
 Route::get('/payment', 'PaymentController@index');
 Route::post('/payment/add', 'PaymentController@transact');
+=======
+
+Route::get('/driver', 'DriverController@getDriver');
+>>>>>>> origin/master

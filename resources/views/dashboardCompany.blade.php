@@ -1,9 +1,8 @@
 @extends('layouts.userDashboard')
 
 @section('title')
-
+	Dashboard
 @endsection
-
 
 @section('dashBoard')
 
@@ -12,32 +11,24 @@
       <div class="card yellow darken-2">
         <div class="card-image waves-effect waves-block waves-light">
           <div class="col col s4 m4 l4">
-              <img src="{!! URL::asset('../img/officer2.png') !!}" alt="" class="circle responsive-img valign-wrapper profile-image" style="margin-left: 135px;">
+              <img src="{!! URL::asset('../img/pup.png') !!}" alt="" class="circle responsive-img valign-wrapper profile-image" style="margin-left: 140px; margin-top: 5px;">
           </div>
         </div>
         <div class="card-content">
           <ul id="profile-page-about-details" class="collection z-depth-1">
               <li class="collection-item">
                 <div class="row">
-                  <div class="col s5 grey-text darken-1">Name</div>
-                  <div class="col s7 grey-text text-darken-4 right-align">ABC Name</div>
+                  <div class="col s5 grey-text darken-1">Company</div>
+                  <div class="col s7 grey-text text-darken-4 right-align">PUP</div>
                 </div>
               </li>
               <li class="collection-item">
                 <div class="row">
-                  <div class="col s5 grey-text darken-1">Municipal</div>
-                  <div class="col s7 grey-text text-darken-4 right-align">HTML, CSS</div>
+                  <div class="col s5 grey-text darken-1">Location</div>
+                  <div class="col s7 grey-text text-darken-4 right-align">Manila</div>
                 </div>
               </li>
           </ul>
-          
-          <ul class="collapsible" data-collapsible="accordion">
-            <li>
-              <div class="collapsible-header black-text"><span class="new badge blue darken-2 white-text" data-badge-caption="custom caption" style="margin-right: 10px;">4</span>Total Arrests</div>
-              <div class="collapsible-body white black-text center"><p>69 arrests</p></div>
-            </li>
-          </ul>
-
           <div class="card-action center">
             <a class="waves-effect waves-light btn yellow lighten-1 activator black-text"><i class="material-icons left">edit</i>Edit Profile</a>
           </div>
@@ -76,49 +67,53 @@
     </div>
   </div>
 
-  <div class="col s12 m6">
-    <table class="bordered highlight" style="border-style: solid;">
-      <thead>
-        <tr>
-          <th data-field="id">Date</th>
-          <th data-field="name">Violator's Name</th>
-          <th data-field="price">License Number</th>
-          <th data-field="">Violation/s</th>
-          <th data-field="">More</th>
-       </tr>
-      </thead>
+            <div class="row">
+                <div class="col s12 m8" style="margin-top:">
+                    <table class="striped white" style="border-radius:10px;" id="dataTable">
 
-      <tbody>
-        <tr>
-          <td>03/11/2017</td>
-          <td>Escala</td>
-          <td>00002</td>
-          <td>Minahal si Lala</td>
-          <td><a href="#!" class="secondary-content"><i class="material-icons">send</i></a></td>
-        </tr>
-        <tr>
-          <td>05/12/2015</td>
-          <td>Abilar</td>
-          <td>00001</td>
-          <td>Nakipaghiwalay kay Mon</td>
-          <td><a href="#!" class="secondary-content"><i class="material-icons">send</i></a></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="col s12 m2">
-    <div class="row">
-      <div class="col s12 m12">
-        <div class="card-panel grey lighten-2">
-          <h6>Violation Summary</h6><br>
-          <span class="black-text">
-          License Type<br>
-          Restriction <br>
-          Amount
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
+                        <thead>
+                            <tr>
+                                <th style="width:100px;" class="green darken-3 white-text">Ticket No</th>
+                                <th style="width:150px;" class="green darken-3 white-text">Arresting Officer</th>
+								<th style="width:150px;" class="green darken-3 white-text">Violator</th>
+                                <th class="blue darken-3 white-text">License No</th>
+                                <th class="blue darken-3 white-text">Date</th>
+                                <th class="blue darken-3 white-text">Status</th>
+                                <th class="blue darken-3 white-text">Action</th>
+                                
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        	<tr>
+                        		<td>Feb. 11, 2014</td>
+                        		<td>Tolentino</td>
+                        		<td>Escala</td>
+                        		<td>00002</td>
+                        		<td>Nakaw na tingin</td>
+                        		<td>Death</td>
+                        		<td><a href="" class="btn">Test</a></td>
+                        	</tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+<script type="text/javascript">
+ $("#dataTable").DataTable({
+                 "columns": [
+                { "orderable": false },
+                { "orderable": false },
+                { "orderable": false },
+                null,
+                null,
+                null,
+                null,
+                ] ,  
+                "pageLength":5,
+				"bLengthChange": false
+            });
+</script>
 
 @endsection
+

@@ -17,10 +17,12 @@
 	<script type="text/javascript" src="{!! URL::asset('../js/materialize.js') !!}"></script>
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  	<script src="{!! URL::asset('../js/datatable.js') !!}"></script>
+  	<script src="{!! URL::asset('../js/jquery.dataTables.min.js') !!}"></script>
 </head>
 <body>
 
-@section('dashboardNav')
+
   <nav>
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
@@ -32,7 +34,6 @@
       </ul>
     </div>
   </nav>
-@endsection
 
 <div>
 	@yield('dashBoard')
