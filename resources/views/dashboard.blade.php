@@ -4,17 +4,18 @@
   Dashboard
 @endsection
 
+
 @section('dashBoard')
 <div class="row black-text">
     <form class="col s12 black-text">
-      	<div class="row">
-
-	<div class="row">       
-        <div class="col s12 m4">
-            <div class="card">
-    			<div class="card-image waves-effect waves-block waves-light">
-      				<img class="activator" src="{!! URL::asset('../img/signupbg.png') !!}">
-    			</div>
+		<div class="row">       
+        	<div class="col s12 m4">
+         		<div class="card yellow darken-2">
+    				<div class="card-image waves-effect waves-block waves-light">
+						<div class="col col s4 m4 l4">
+	                    	<img src="{!! URL::asset('../img/officer2.png') !!}" alt="" class="circle responsive-img valign-wrapper profile-image" style="margin-left: 135px;">
+	                	</div>
+    				</div>
     			<div class="card-content">
 					<ul id="profile-page-about-details" class="collection z-depth-1">
                   		<li class="collection-item">
@@ -31,8 +32,7 @@
                   		</li>
                 	</ul>
                 	<div class="card-action center">
-	        			<a class="waves-effect waves-light btn yellow lighten-1"><i class="material-icons">edit</i></a>
-						<a class="waves-effect waves-light btn activator"><i class="material-icons">more_vert</i></a>              
+						<a class="waves-effect waves-light btn yellow lighten-1 activator"><i class="material-icons left">edit</i>Edit Profile</a>
                 	</div>
     			</div>
     			<div class="card-reveal">
@@ -56,7 +56,7 @@
 							          	<input placeholder="Dela Cruz" id="lastName" type="text" class="validate">
 								        <label for="lastName">Last Name</label>
 								    </div>
-							    </div
+							    </div>
 								<div class="input-field col s12">
 									<select id = 'licenseTypes'>
 										<option value="1">Student</option>
@@ -79,6 +79,8 @@
 									<label>Restriction</label>
 								</div>
 							</form>
+							<button class="btn waves-effect waves-light right" type="submit" name="action">Submit
+    						<i class="material-icons right">send</i></button>
 						</div>
     			</div>
   			</div>		
@@ -123,7 +125,6 @@
 		</div>
 
 		<div class="col s12 m4">
-
 		    <div class="card-panel green">
           		<span class="white-text center"><h4>Transaction History</h4>
           		</span>

@@ -19,7 +19,7 @@
 </head>
 <body>
 
-@section('dashboardNav')
+
   <nav>
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
@@ -31,7 +31,6 @@
       </ul>
     </div>
   </nav>
-@endsection
 
 <div>
 	@yield('dashBoard')
