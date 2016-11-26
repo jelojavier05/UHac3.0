@@ -13,3 +13,5 @@
 
 Route::get('/', 'LoginController@index');
 Route::get('/signup', 'SignUpController@index');
+Route::get('/profile', 'LogProfileController@index');
+Route::get('/dashboard', 'DashboardController@index');
