@@ -54,11 +54,7 @@
 							          	<input placeholder="Dela Cruz" id="lastName" type="text" class="validate">
 								        <label for="lastName">Last Name</label>
 								    </div>
-							    </div>
-								<div class="input-field col s12">
-								    <input placeholder="N10-M0-1****" id="licenseNumber" type="text" class="validate">
-								    <label for="licenseNumber">License Number</label>
-							    </div>
+							    </div
 								<div class="input-field col s12">
 									<select id = 'licenseTypes'>
 										<option value="1">Student</option>
