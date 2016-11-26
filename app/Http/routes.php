@@ -38,3 +38,4 @@ Route::get('/payment', 'PaymentController@index');
 Route::post('/payment/add', 'PaymentController@transact');
 
 Route::get('/driver', 'DriverController@getDriver');
+Route::get('/user', 'LoginController@index');
