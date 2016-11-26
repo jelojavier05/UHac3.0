@@ -1,27 +1,46 @@
-@extends('layouts.main')
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-@section('title')
-	Test
-@endsection
+	<meta charset="utf-8">
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8 ">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+	<meta name="csrf_token" content="{{ csrf_token() }}" />
+	<title></title>
 
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-@section('body')
+	<link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/materialize.min.css') !!}">
+	<link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/styles.css') !!}">
+	<script type="text/javascript" src="{!! URL::asset('../js/jquery-2.1.1.min.js') !!}"></script>
+	<script type="text/javascript" src="{!! URL::asset('../js/init.js') !!}"></script>
+	<script type="text/javascript" src="{!! URL::asset('../js/materialize.min.js') !!}"></script>
+	<script type="text/javascript" src="{!! URL::asset('../js/materialize.js') !!}"></script>
 
-<h5>TETETETETETETETETE</h5>
+</head>
 
+<body id="ticketingBody">
+
+	<div style='position:absolute;z-index:0;left:0;top:0;width:100%;height:100%'>
+  		<img src="{!! URL::asset('../img/background1.jpg') !!}" style='width:100%;height:100%' alt='[]' />
+	</div>
+
+	<div class="container caption center align">
+      	<div class="row">
         	<div class="col s12 m8 push-m6">
           		<div class="card" style="opacity: -10px;">
-            		<div class="card-content white-text" style="border-radius: 100px;">
-              			<div class="card-title">
+                    <div class="card-title">
                             <div class="valign-wrapper center-align">
                                 <div class="col s3">
-                                <img src="{!! URL::asset('../img/officer.png') !!}" class="responsive-img"/>
+                                    <img src="{!! URL::asset('../img/officer.png') !!}" class="responsive-img"/>
                                 </div>
                                 <div class="col s9">
-                                    <h2 class="black-text">VIOLATION SUMMARY</h2>
+                                    <h4 class="black-text">VIOLATION SUMMARY</h4>
                                 </div>
                             </div>
                         </div>
+            		<div class="card-content white-text" style="border-radius: 100px;">
+              			
 	              			<div class="row black-text">
 							    <form class="col s12 black-text">
 							      	  <div class="row">
@@ -90,17 +109,21 @@
 						    </div>
             		</div>
             		<div class="card-action center">
-	            		<a class="waves-effect waves-light btn red lighten-1"><i class="material-icons left">back</i>back</a>
+	            		<a class="waves-effect waves-light btn red lighten-1"><i class="material-icons left">cancel</i>back</a>
 						<a class="waves-effect waves-light btn green lighten-1" id = 'btnSubmit'><i class="material-icons right">done</i>submit</a>
             		</div>
           		</div>
         	</div>
       	</div>
 	</div>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+      $('select').material_select();
+      $('.slider').slider({full_width: true});
+    });    
+	</script>
+
 	
-
-
-
-
-
-@endsection
+</body>
+</html>
