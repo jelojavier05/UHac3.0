@@ -1,0 +1,3 @@
+.signupBody{
+	background-image: url("{!! URL::asset('../img/signupbg.png') !!}");
+}
