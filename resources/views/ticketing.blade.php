@@ -28,17 +28,17 @@
 	<div class="container caption center">
       	<div class="row">
       		<br>
-        	<div class="col s12 m8 push-m4">
+        	<div class="col s12 m6 push-m6">
           		<div class="card" style="opacity: -10px;">
                     
             		<div class="card-content white-text" style="border-radius: 100px;">
               			<div class="card-title">
                             <div class="valign-wrapper black-text center">
-                                <div class="col s2">
-                                    <img src="{!! URL::asset('../img/officer.png') !!}" style="height: 100px ; width: 100px ;">
+                                <div class="col s4 m3">
+                                    <img src="{!! URL::asset('../img/officer.png') !!}" class="responsive-img"/>
                                 </div>
-                                <div class="col s10">
-                                    <h3>VIOLATION TICKET</h3>
+                                <div class="col s8 m9">
+                                    <h4>VIOLATION TICKET</h4>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                                             <input placeholder="N01-04-01***" id="licenseNumber" type="text" class="validate">
                                             <label for="license">License Number</label>
                                             </div>
-                                            <a class="btn" id = 'btnFind'><i class="material-icons">search</i></a>
+                                            <a class="btn pink" id = 'btnFind'><i class="material-icons">search</i></a>
                                             
                                         </div>
                                         
@@ -91,7 +91,7 @@
 				        </div>
             		</div>
             		<div class="card-action center">
-	            		<a class="waves-effect waves-light btn blue lighten-1"><i class="material-icons left">cancel</i>back</a>
+	            		<a class="waves-effect waves-light btn pink lighten-1"><i class="material-icons left">cancel</i>back</a>
 						<a class="waves-effect waves-light btn green lighten-1" id = 'btnSubmit'><i class="material-icons left">done</i>submit</a>
             		</div>
           		</div>
