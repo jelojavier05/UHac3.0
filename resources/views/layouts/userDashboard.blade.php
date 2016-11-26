@@ -5,7 +5,6 @@
 	<meta charset="utf-8">
 	<meta http-equiv="Content-type" content="text/html; charset=UTF-8 ">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-	<meta name="csrf_token" content="{{ csrf_token() }}" />
 	<title>@yield('title')</title>
 
 	<link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/materialize.min.css') !!}">
@@ -25,7 +24,7 @@
 
   <nav class="black" style="height: 70px;">
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
+      <a href="#!" class="brand-logo center"><img src="{!! URL::asset('../img/final.png') !!}"" style="height: 70px; width: 200px;"></a>
       <ul class="right hide-on-med-and-down">
         <li><a class="waves-effect waves-teal btn-flat white">Logout</a></li>
       </ul>

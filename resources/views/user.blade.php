@@ -4,15 +4,6 @@
 
 @endsection
 
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-	<link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/materialize.min.css') !!}">
-	<link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/styles.css') !!}">
-	<script type="text/javascript" src="{!! URL::asset('../js/jquery-2.1.1.min.js') !!}"></script>
-	<script type="text/javascript" src="{!! URL::asset('../js/init.js') !!}"></script>
-	<script type="text/javascript" src="{!! URL::asset('../js/materialize.min.js') !!}"></script>
-	<script type="text/javascript" src="{!! URL::asset('../js/materialize.js') !!}"></script>
-
 @section('navigation')
 <!-- Dropdown Structure -->
 <ul id="LoginDropdown" class="dropdown-content">
@@ -37,7 +28,8 @@
 
 @section('body')
 
-  <div class="fullscreen slider">
+<div class="container">
+   <div class="fullscreen slider fixed">
     <ul class="slides">
       <li>
         <img src="{!! URL::asset('../img/background2.jpg') !!}"> 
@@ -54,7 +46,18 @@
         </div>
       </li>
     </ul>
-  </div>
+    <div class="card">
+      <div class="card-content">
+        <ul id="LoginDropdown" class="dropdown-content">
+          <li><a href="#!"><img src="{!! URL::asset('../img/D.png') !!}" style="height: 50px;"></a></li>
+          <li><a href="#!"><img src="{!! URL::asset('../img/E.png') !!}" style="height: 50px;"></a></li>
+          <li><a href="#!"><img src="{!! URL::asset('../img/C.png') !!}" style="height: 50px;"></a></li>
+          <li class="divider"></li>
+        </ul>
+      </div>
+    </div>
+  </div> 
+</div> 
 
   <script type="text/javascript">
   	$(document).ready(function(){

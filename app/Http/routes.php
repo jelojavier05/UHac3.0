@@ -30,10 +30,8 @@ Route::post('/ticket/store', 'TicketController@store');
 Route::get('/summary', 'SummaryController@index');
 Route::get('/test', 'TestController@index');
 
-<<<<<<< HEAD
 Route::get('/payment', 'PaymentController@index');
 Route::post('/payment/add', 'PaymentController@transact');
-=======
 
 Route::get('/driver', 'DriverController@getDriver');
->>>>>>> origin/master
+
