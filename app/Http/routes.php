@@ -17,4 +17,5 @@ Route::get('/profile', 'LogProfileController@index');
 Route::get('/dashboard', 'DashboardController@index');
 
 Route::get('/signup', 'SignUpController@index');
-Route::post('/signup/store', 'SignUpController@store');
+Route::post('/signup/store', 'DriverController@store');
+Route::post('/driver/update', 'DriverController@updateDriver');
