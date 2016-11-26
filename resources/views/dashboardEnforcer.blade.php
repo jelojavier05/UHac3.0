@@ -30,7 +30,7 @@
 	        	</div>
 	        	<div class="card-action yellow darken-1 center">
 					<a class="btn yellow lighten-1 black-text activator" href="#modal1"><i class="material-icons left">edit</i>Edit Profile</a>
-                    <a class ="btn red">TICKET DRIVER</a>
+                    <a class ="btn red" id = 'btnTicket'>TICKET DRIVER</a>
 	       		</div>
 	       		<div class="card-reveal">
 					<form class="col s12">
@@ -87,4 +87,12 @@
             </div>
         </div>
     </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#btnTicket').click(function(){
+            window.location.href = '{{ URL::to("/ticketing") }}';
+        });
+    });
+</script>
 @endsection
