@@ -22,5 +22,7 @@
 	<div>
 		@yield('body')
 	</div>
+
+	@yield('scripts')
 </body>
 </html>
