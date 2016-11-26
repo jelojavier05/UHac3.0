@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
 
 class SignUpController extends Controller
 {
@@ -26,7 +27,7 @@ class SignUpController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -37,7 +38,32 @@ class SignUpController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        try{
+            DB::beginTransaction();
+
+            $id = DB::table('tblDriver')->insertGetId([
+                'strDrivLicense' => $request->strDrivLicense,
+                'strDrivAccNo' => $request->strDrivAccNo,
+                'strDrivUname' => $request->strDrivUname,
+                'strDrivPword' => $request->strDrivPword,
+                'strDrivFname' => $request->strDrivFname,
+                'strDrivLname' => $request->strDrivLname,
+                'strDrivMname' => $request->strDrivMname,
+                'intLicenseType' => $request->intLicenseType,
+            ]);
+
+            foreach ($request->arrRestriction as $value) {
+                DB::table('tblDriverRestriction')->insert([
+                    'intDRRestId' => $value,
+                    'strDRLicense' => $request->strDrivLicense
+                ]);
+            }
+
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
     }
 
     /**

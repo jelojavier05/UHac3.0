@@ -12,4 +12,6 @@
 */
 
 Route::get('/', 'LoginController@index');
+
 Route::get('/signup', 'SignUpController@index');
+Route::post('/signup/store', 'SignUpController@store');
