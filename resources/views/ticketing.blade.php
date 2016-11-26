@@ -22,7 +22,7 @@
 <body id="ticketingBody">
 
 	<div style='position:absolute;z-index:0;left:0;top:0;width:100%;height:100%'>
-  		<img src="{!! URL::asset('../img/traffic_light.jpg') !!}" style='width:100%;height:100%' alt='[]' />
+  		<img src="{!! URL::asset('../img/traffic_light.jpg') !!}" style='width:100%;height:110%;background-size:cover' alt='[]' />
 	</div>
 
 	<div class="container caption center">
@@ -56,25 +56,33 @@
                                         <div class="row">
                                             <div class="row">
                                                 <h6 class="black-text">Driver's Information</h6>
+                                                <div class="row">
+                                                    <label class = "col s4">Name: </label>
+                                                    <label id = 'strName' class="col s8"></label>
+                                                </div>
+                                                <div class="row">
+                                            
+                                                    <label class="col s4">License No.: </label>
+
+                                                    <label id = 'strLicenseNumber' class="col s8"></label>
+                                                </div>
+                                                <div class="row">
+                                                    
+                                                    <label class="col s4">License Type: </label>
+
+                                                    <label id = 'strLicenseType' class="col s8"></label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col s4">Restrictions: </label>
+
+                                                    <label id = 'strRestriction' class="col s8"></label>
+                                                </div>
+                                                <div class="row">
                                                 
-                                                <label class = "col s4">Name: </label>
-                                                <label id = 'strName' class="col s8"></label>
+                                                    <label class="col s4">Expiration Date: </label>
                                             
-                                                <label class="col s4">License No.: </label>
-                                            
-                                                <label id = 'strLicenseNumber' class="col s8"></label>
-                                                
-                                                <label class="col s4">License Type: </label>
-                                            
-                                                <label id = 'strLicenseType' class="col s8"></label>
-                                                
-                                                <label class="col s4">Restrictions: </label>
-                                            
-                                                <label id = 'strRestriction' class="col s8"></label>
-                                                
-                                                <label class="col s4">Expiration Date: </label>
-                                            
-                                                <label id = 'dateExpiration' class="col s8"></label>
+                                                    <label id = 'dateExpiration' class="col s8"></label>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row">
