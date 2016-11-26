@@ -1,10 +1,13 @@
 @extends('layouts.userDashboard')
 
 @section('title')
-
+  Dashboard
 @endsection
 
 @section('dashBoard')
+<div class="row black-text">
+    <form class="col s12 black-text">
+      	<div class="row">
 
 	<div class="row">       
         <div class="col s12 m4">
@@ -53,11 +56,7 @@
 							          	<input placeholder="Dela Cruz" id="lastName" type="text" class="validate">
 								        <label for="lastName">Last Name</label>
 								    </div>
-							    </div>
-								<div class="input-field col s12">
-								    <input placeholder="N10-M0-1****" id="licenseNumber" type="text" class="validate">
-								    <label for="licenseNumber">License Number</label>
-							    </div>
+							    </div
 								<div class="input-field col s12">
 									<select id = 'licenseTypes'>
 										<option value="1">Student</option>
@@ -164,7 +163,14 @@
       $('.slider').slider({full_width: true});
     });    
 	</script>
-
 @endsection
 
-
+@section('scripts')
+<script type="text/javascript">
+	$(document).ready(function() {
+      $('select').material_select();
+      $('.slider').slider({full_width: true});
+    });    
+	</script>
+<script type="text/javascript" src="{!! URL::asset('../js/EditAccount.js') !!}"></script>
+@endsection

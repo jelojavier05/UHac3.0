@@ -120,7 +120,7 @@
 
 				$.ajax({
 					type: "POST",
-					url: "{{action('SignUpController@store')}}",
+					url: "{{action('DriverController@store')}}",
 					beforeSend: function (xhr) {
 						var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -140,13 +140,7 @@
 						arrRestriction: arrRestriction
 					},
 					success: function(data){
-						swal({
-							title: "Success!",
-							text: "Account Created",
-							type: "success"
-						},function(){
-
-						});
+						confirm('success');
 					},
 					error: function(data){
 						var toastContent = $('<span>Error Occured. </span>');

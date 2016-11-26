@@ -6,9 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use DB;
 
-class SignUpController extends Controller
+class TicketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,7 @@ class SignUpController extends Controller
      */
     public function index()
     {
-        return view('/signup');
+        return view('ticketing');
     }
 
     /**
@@ -27,7 +26,7 @@ class SignUpController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -38,7 +37,7 @@ class SignUpController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
