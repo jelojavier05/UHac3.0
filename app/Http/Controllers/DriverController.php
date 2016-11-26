@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
+use Input;
+use Carbon\Carbon;
 
 class DriverController extends Controller
 {
@@ -15,9 +17,26 @@ class DriverController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getDriver()
     {
-        //
+
+        $licenseNumber = Input::get('strLicenseNumber');
+        $driver = DB::table('tblDriver')
+            ->select('strDrivFname', 'strDrivLname', 'datExpiration', 'strDrivLicense')
+            ->where('strDrivLicense', $licenseNumber)
+            ->first();
+        if (is_null($driver)){
+            return response()->json(false);
+        }
+        $restriction = DB::table('tblDriverRestriction')
+            ->select('intDRRestId')
+            ->where('strDRLicense', $licenseNumber)
+            ->get();
+
+        $driver->strDate = (new Carbon($driver->datExpiration))->toFormattedDateString();
+        $driver->restriction = $restriction;
+
+        return response()->json($driver);
     }
 
     /**

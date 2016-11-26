@@ -23,3 +23,6 @@ Route::post('/signup/store', 'SignUpController@store');
 
 Route::get('/ticketing', 'TicketController@index');
 Route::get('/test', 'TestController@index');
+
+
+Route::get('/driver', 'DriverController@getDriver');

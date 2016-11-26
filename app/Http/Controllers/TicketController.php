@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
 
 class TicketController extends Controller
 {
@@ -16,7 +17,12 @@ class TicketController extends Controller
      */
     public function index()
     {
-        return view('ticketing');
+        $rules = DB::table('tblRules')
+            ->select('*')
+            ->get();
+
+        return view('ticketing')
+            ->with('rules', $rules);
     }
 
     /**
@@ -24,9 +30,10 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->session()->put('licenseNumber', $request->licenseNumber);
+        $request->session()->put('arrViolation', $request->arrViolation);
     }
 
     /**
@@ -37,7 +44,7 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

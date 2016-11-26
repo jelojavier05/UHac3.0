@@ -42,34 +42,28 @@
                                             <input placeholder="N01-04-01***" id="licenseNumber" type="text" class="validate">
                                             <label for="license">License Number</label>
                                             </div>
-                                            <input type="button" class="btn" value="Find" />
+                                            <input type="button" class="btn" value="Find" id = 'btnFind'/>
                                         </div>
                                         
                                         <div class="row">
                                             <div class="row">
-                                                <label name="DriverLicenseNo">N01-04-01***</label>
                                             
-                                                <label name="DriverName">Dela Cruz Juan</label>
+                                                <label id = 'strName'></label>
                                             </div>
                                             <div class="row">
-                                                <label name="DriverLicenseType">License Type</label>
+                                                <label id = 'strDriverLicense'></label>
                                             
-                                                <label name="DriverRestriction">Restriction</label>
+                                                <label id = 'strRestriction'></label>
                                             
-                                                <label name="DriverLicenseExpiration">2017-11-05</label>
+                                                <label id = 'dateExpiration'></label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <select multiple id = 'violations'>
-                                                    <option value="1">Violation 1</option>
-                                                    <option value="2">Violation 2</option>
-                                                    <option value="3">Violation 3</option>
-                                                    <option value="4">Violation 4</option>
-                                                    <option value="5">Violation 5</option>
-                                                    <option value="6">Violation 6</option>
-                                                    <option value="7">Violation 7</option>
-                                                    <option value="8">Violation 8</option>
+                                                    @foreach($rules as $value)
+                                                    <option value="{{$value->intRulesId}}">{{$value->strRuleDesc}}</option>
+                                                    @endforeach
                                                 </select>
                                                 <label>Violations</label>
                                             </div>
@@ -93,6 +87,65 @@
     });    
 	</script>
 
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#btnFind').click(function(){
+        
+        var licenseNumber = $('#licenseNumber').val();
+        $.ajax({
+            type: "GET",
+            url: "/driver?strLicenseNumber=" + licenseNumber,
+            success: function(data){
+                if (data){
+                    $('#strName').text(data.strDrivFname + ' ' + data.strDrivLname);
+                    $('#strLicenseNumber').text(data.strDrivLicense);
+                    var strRestriction = '';
+                    $.each(data.restriction,function(index,value){
+                        strRestriction += value.intDRRestId;
+                    });
+                    $('#strRestriction').text(strRestriction);
+                    $('#dateExpiration').text(data.strDate);
+                }else{
+                    confirm('No Existing record.');
+                }                    
+                    
+            },
+            error: function(data){
+                var toastContent = $('<span>Error Occured. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+
+            }
+        });//ajax
+    });
+
+    $('#btnSubmit').click(function(){
+        var arrViolation = $('#violations').val();
+        $.ajax({
+            type: "POST",
+            url: "{{action('DriverController@store')}}",
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                      return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+                licenseNumber: licenseNumber,
+                arrViolation: arrViolation
+            },
+            success: function(data){
+                confirm('success');
+            },
+            error: function(data){
+                var toastContent = $('<span>Error Occured. </span>');
+                Materialize.toast(toastContent, 1500,'red', 'edit');
+
+            }
+        });//ajax
+    });
+});
+</script>
 	
 </body>
 </html>
