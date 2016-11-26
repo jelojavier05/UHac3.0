@@ -55,8 +55,8 @@
                                         
                                         <div class="row">
                                             <div class="row">
-                                                <h5 class="black-text">Driver's Information</h5>
-                                            
+                                                <h6 class="black-text">Driver's Information</h6>
+                                                
                                                 <label class = "col s4">Name: </label>
                                                 <label id = 'strName' class="col s8"></label>
                                             
