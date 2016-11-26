@@ -15,7 +15,7 @@
 		      	</div>
       	
       		<div class="card">
-	        	<div class="card-content">
+	        	<div class="card-content yellow darken-2">
 	        		<br>
 	          		<p><h5 class="center">{{$FullName}}</h5></p>
 	          	 	   <h6 class="center">{{$License}}</h6>
@@ -23,7 +23,7 @@
 	          	 	   <!-- <h6 class="center">{{$datExpiration}}</h6> -->
 	          	 	<br>
 	        	</div>
-	        	<div class="card-action center">
+	        	<div class="card-action yellow darken-1 center">
 					<a class="btn yellow lighten-1 black-text activator" href="#modal1"><i class="material-icons left">edit</i>Edit Profile</a>
 	       		</div>
 	       		<div class="card-reveal">
@@ -77,12 +77,13 @@
 
 	    <div class="col s12 m4 l4">
 
-			<div class="card red">
+			<div class="card red darken-2">
 				<div class="card-content">
 					<div class="row">
 						<div class="col s12">
 							<ul class="collection with-header">
 								<li class="collection-header"><h5 class="center">Violation</h5></li>
+<<<<<<< HEAD
 								@if($intVioCounter > 0)
 						      	<li class="collection-item">{{$datViolationDay}}</li>
 						      	<li class="collection-item">Officer: {{$strEnfoFullName}}</li>
@@ -90,6 +91,11 @@
 						      	@else
 						      	<li class="collection-item center">You don't have any violation!</li>
 						      	@endif
+=======
+						      	<li class="collection-item">Jan. 20, 2016</li>
+						      	<li class="collection-item">Officer Carlo<a href="#!" class="secondary-content" type="button" value="Click Me" onclick="getValue();"><img src="{!! URL::asset('../img/report.png') !!}" style="height:30px; width: 30px; margin-top: -5px;" class="secondary-content"></a></li>
+						      	<li class="collection-item">Manila City Hall</li>
+>>>>>>> origin/master
 						    </ul>
 							<ul class="collapsible" data-collapsible="accordion">
 								@foreach($ViolationDetails AS $detail)
@@ -104,9 +110,9 @@
 						</div>
 					</div> 
 				</div>
-				<div class="card-action center">
-        			<a class="waves-effect waves-light btn red lighten-2"><i class="material-icons left">payment</i>Bank</a>
-					<a class="waves-effect waves-light btn red lighten-2" id = 'btnSubmit'><i class="material-icons right">print</i>PDF</a>
+				<div class="card-action center red darken-1">
+        			<a class="waves-effect waves-light btn red lighten-1" type="button" value="Click Me" onclick="getConfirmation();"><i class="material-icons left">payment</i>Bank</a>
+					<a class="waves-effect waves-light btn red lighten-1" id = 'btnSubmit'><i class="material-icons right">print</i>PDF</a>
         		</div>
 			</div>	    	
 	    </div>
@@ -116,9 +122,9 @@
                 <thead>
                     <tr>
                         <th style="width:100px;" class="green darken-3 white-text">Date</th>
-                        <th style="width:150px;" class="green darken-3 white-text">Arresting Officer</th>
-						<th style="width:150px;" class="green darken-3 white-text">Amount</th>
-                        <th class="blue darken-3 white-text">Violation/s</th>
+                        <th style="width:150px;" class="green darken-2 white-text">Arresting Officer</th>
+						<th style="width:150px;" class="green darken-1 white-text">Amount</th>
+                        <th class="green white-text">Violation/s</th>
                     </tr>
                 </thead>
 
@@ -168,8 +174,19 @@
        }
        else{
           document.write ("User does not want to continue!");
-          return false;
+           
+           document.location.href = "/dashboard";
+
        }
+    }
+ //-->
+</script>
+
+<script type="text/javascript">
+ <!--
+    function getValue(){
+       var retVal = prompt("Enter your complaint : ", "your complaint here");
+       document.write("You have entered : " + retVal);
     }
  //-->
 </script>

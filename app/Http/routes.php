@@ -16,7 +16,11 @@ Route::get('/signup', 'SignUpController@index');
 Route::get('/profile', 'LogProfileController@index');
 Route::get('/dashboard', 'DashboardController@index');
 Route::get('/dashboardEnforcer', 'dashboardEnforcerController@index');
+
 Route::get('/dashboardCompany', 'dashboardCompanyController@index');
+Route::get('/dashboardCompany/getTickets', 'dashboardCompanyController@getMunicipalityTickets');
+Route::post('/dashboardCompany/payment', 'dashboardCompanyController@paymentInCompany');
+Route::post('/dashboardCompany/claim', 'dashboardCompanyController@claimInCompany');
 
 Route::get('/signup', 'SignUpController@index');
 Route::post('/signup/store', 'DriverController@store');
@@ -32,5 +36,9 @@ Route::get('/test', 'TestController@index');
 
 Route::get('/payment', 'PaymentController@index');
 Route::post('/payment/add', 'PaymentController@transact');
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 
 Route::get('/driver', 'DriverController@getDriver');
