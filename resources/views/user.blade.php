@@ -19,7 +19,7 @@
 <div class="navbar-fixed">
 <nav>
     <div class="nav-wrapper black">
-      <a href="#!" class="brand-logo center ">HULE</a>
+      <a href="#!" class="brand-logo center ">HOLEH</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="mobile.html">Sign Up</a></li>
@@ -44,16 +44,12 @@
       <li>
         <img src="{!! URL::asset('../img/background3.jpg') !!}"> 
         <div class="caption Left-align">
-          <h3>Hule!</h3>
-          <h5 class="light grey-text text-lighten-3">pero di Kulong</h5>
+          <h3>Holeh!</h3>
+          <h5 class="light grey-text text-lighten-3">pero sauve lang...</h5>
         </div>
       </li>
       <li>
         <img src="{!! URL::asset('../img/background1.jpg') !!}">
-        <div class="caption center-align">
-          <h3>Center Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
       </li>
     </ul>
   </div>

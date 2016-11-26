@@ -30,6 +30,7 @@
 	        	</div>
 	        	<div class="card-action yellow darken-1 center">
 					<a class="btn yellow lighten-1 black-text activator" href="#modal1"><i class="material-icons left">edit</i>Edit Profile</a>
+                    <a class ="btn red">TICKET DRIVER</a>
 	       		</div>
 	       		<div class="card-reveal">
 					<form class="col s12">
@@ -65,6 +66,7 @@
 
 	    
             </div>
+        
             <div class="col s12 m6 l6">
                 <div class="col s12">
                     <ul class="collapsible" data-collapsible="accordion">

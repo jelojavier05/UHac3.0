@@ -25,7 +25,7 @@
 
   <nav>
     <div class="nav-wrapper black">
-      <a href="#!" class="brand-logo center ">HULE</a>
+      <a href="#!" class="brand-logo center ">HOLEH</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Logout</a></li>
