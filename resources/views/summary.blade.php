@@ -60,19 +60,16 @@
                                           <h6 class="black-text">Driver's Information</h5>
                                             <div class="row">
                                                 <label class="col s6 m3">License Number:</label>
-                                                <label id="DriverLicenseNo" class="col s6 m3">N01-04-01***</label>
+                                                <label id="DriverLicenseNo" class="col s6 m3">{{$summary->driverData->strDrivLicense}}</label>
                                             
                                                 <label class="col s6 m3">Driver Name:</label>
-                                                <label id="DriverName" class="col s6 m3">Dela Cruz Juan</label>
+                                                <label id="DriverName" class="col s6 m3">{{$summary->driverData->strDrivFname}} {{$summary->driverData->strDrivLname}}</label>
                                             
                                                 <label class="col s6">License Type:</label>
-                                                <label id="DriverLicenseType" class="col s6">NON_PROFESSIONAL</label>
-                                            
-                                                <label class="col s6">Restriction:</label>
-                                                <label id="DriverRestriction" class="col s6">1,2</label>
+                                                <label id="DriverLicenseType" class="col s6">{{$summary->driverData->strLicenseType}}</label>
                                                 
                                                 <label class="col s6">Driver License Expiration:</label>
-                                                <label id="DriverLicenseExpiration" class="col s6">2017-11-05</label>
+                                                <label id="DriverLicenseExpiration" class="col s6">{{$summary->driverData->strDate}}</label>
                                             </div>
                                         
                                             <div class="row">
@@ -85,22 +82,12 @@
                                                     </thead>
 
                                                     <tbody>
+                                                      @foreach($summary->arrViolation as $value)
                                                       <tr>
-                                                        <td>Violation 1</td>
-                                                        <td>Php 200.00</td>
+                                                        <td>{{$value->strRuleDesc}}</td>
+                                                        <td>{{$value->dblRuleFine}}</td>
                                                       </tr>
-                                                      <tr>
-                                                        <td>Violation 2</td>
-                                                        <td>Php 500.00</td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td>Violation 3</td>
-                                                        <td>Php 300.00</td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td>Total Fine:</td>
-                                                        <td>Php 1000.00</td>
-                                                      </tr>    
+                                                      @endforeach
                                                     </tbody>
                                                   </table>
                                             </div>
@@ -124,6 +111,31 @@
     });    
 	</script>
 
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#btnSubmit').click(function(){
+        $.ajax({
+          type: "POST",
+          url: "{{action('TicketController@store')}}",
+          beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+          },
+          success: function(data){
+            confirm('success');
+          },
+          error: function(data){
+            var toastContent = $('<span>Error Occured. </span>');
+            Materialize.toast(toastContent, 1500,'red', 'edit');
+
+          }
+        });//ajax
+      });
+    });
+  </script>
 	
 </body>
 </html>
