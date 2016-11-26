@@ -36,13 +36,5 @@ Route::get('/test', 'TestController@index');
 
 Route::get('/payment', 'PaymentController@index');
 Route::post('/payment/add', 'PaymentController@transact');
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
-
->>>>>>> origin/master
 Route::get('/driver', 'DriverController@getDriver');
