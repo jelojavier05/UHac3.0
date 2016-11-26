@@ -21,17 +21,9 @@
 </head>
 <body>
 
-
-<<<<<<< HEAD
   <nav class="black" style="height: 70px;">
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo center"><img src="{!! URL::asset('../img/final.png') !!}"" style="height: 70px; width: 200px;"></a>
-=======
-  <nav>
-    <div class="nav-wrapper black">
-      <a href="#!" class="brand-logo center ">HOLEH</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
->>>>>>> e5594347b0dc4988c381219a10ec21a2c3d02088
       <ul class="right hide-on-med-and-down">
         <li><a id = 'logout'>Logout</a></li>
       </ul>

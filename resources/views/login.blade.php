@@ -32,6 +32,7 @@
           		<div class="card" style="opacity: -10px;">
             		<div class="card-content white-text" style="border-radius: 100px;">
               			<span class="card-title"><img src="{!! URL::asset('../img/car.png') !!}" style="height: 100px ; width: 100px ;"></span>
+<<<<<<< HEAD
                             <h4 class="black-text">Sign in to Hooleh</h4>
                             <div class="row">
 <<<<<<< HEAD
@@ -46,12 +47,19 @@
                                 <p>
                                   <input class="with-gap" name="group1" type="radio" id="driver" value = 1 />
 =======
+=======
+                            <h4 class="black-text">Sign in to Holeh as</h4>
+                            <div class="row">
+>>>>>>> origin/master
                                 
                                   <input name="group1" type="radio" id="company" />
                                   <label for="company">Company</label>
                                   <input name="group1" type="radio" id="enforcer" />
                                   <label for="enforcer">Enforcer</label>
                                   <input class="with-gap" name="group1" type="radio" id="driver"  />
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
                                   <label for="driver">Driver</label>
                             </div>
