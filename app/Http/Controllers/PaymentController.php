@@ -121,7 +121,7 @@ class PaymentController extends Controller
 			            $VH->save();
 
 			            $Payment = new Payment();
-			            $Payment->strTransactionId = $transId;
+			            $Payment->strTransactionId = $transId;	
 			            $Payment->strViolationHeaderId = 4;
 			            $Payment->strPaidTo = $PaidTo;
 			            $Payment->dblAmount = $amount;

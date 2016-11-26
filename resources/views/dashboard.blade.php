@@ -17,8 +17,10 @@
       		<div class="card">
 	        	<div class="card-content">
 	        		<br>
-	          		<p><h5 class="center">Rafael Desuyo Jr.</h5></p>
-	          	 	   <h6 class="center">2013-03046-MN-0</h6>
+	          		<p><h5 class="center">{{$FullName}}</h5></p>
+	          	 	   <h6 class="center">{{$License}}</h6>
+	          	 	   <h6 class="center">{{$LicenseType}}</h6>
+	          	 	   <!-- <h6 class="center">{{$datExpiration}}</h6> -->
 	          	 	<br>
 	        	</div>
 	        	<div class="card-action center">
@@ -81,21 +83,22 @@
 						<div class="col s12">
 							<ul class="collection with-header">
 								<li class="collection-header"><h5 class="center">Violation</h5></li>
-						      	<li class="collection-item">Jan. 20, 2016</li>
-						      	<li class="collection-item">Officer Carlo</li>
-						      	<li class="collection-item">Manila City Hall</li>
+								@if($intVioCounter > 0)
+						      	<li class="collection-item">{{$datViolationDay}}</li>
+						      	<li class="collection-item">Officer: {{$strEnfoFullName}}</li>
+						      	<li class="collection-item">Location: {{$strMunicipal}}</li>
+						      	@else
+						      	<li class="collection-item center">You don't have any violation!</li>
+						      	@endif
 						    </ul>
 							<ul class="collapsible" data-collapsible="accordion">
+								@foreach($ViolationDetails AS $detail)
 								<li>
-								  <div class="collapsible-header"><span><h6 class="right">520.00</h6>Beating the red light</span></div>
+								  <div class="collapsible-header"><span><h6 class="right">{{$detail->dblRuleFine}}</h6></span>{{$detail->strRuleDesc}}</div>
 								  <div class="collapsible-body white"><p>Details.</p>
 								  </div>
 								</li>
-								<li>
-								  <div class="collapsible-header" style=""><h6 class="right">420.00</h6> No License</div>
-								  <div class="collapsible-body white"><p>Details.</p>
-								  </div>
-								</li>
+								@endforeach
 							 </ul>
 							 <h6 class="right">Total Amount:</h6>
 						</div>
