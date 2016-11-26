@@ -6,7 +6,7 @@
 
 @section('dashBoard')
 
-	<div class="row">        
+	<div class="row">       
         <div class="col s12 m4">
             <div class="card">
     			<div class="card-image waves-effect waves-block waves-light">
@@ -27,8 +27,10 @@
                     		</div>
                   		</li>
                 	</ul>
-      				<a class="btn right"><i class="material-icons activator">more_vert</i></a>
-      				<br>
+                	<div class="card-action center">
+	        			<a class="waves-effect waves-light btn yellow lighten-1"><i class="material-icons">edit</i></a>
+						<a class="waves-effect waves-light btn activator"><i class="material-icons">more_vert</i></a>              
+                	</div>
     			</div>
     			<div class="card-reveal">
       				<span class="card-title grey-text text-darken-4 center">Account Details<i class="material-icons right">close</i></span>
@@ -79,49 +81,57 @@
 								</div>
 							</form>
 						</div>
-      				<a class="btn-floating btn-large waves-effect waves-light yellow"><i class="material-icons">edit</i></a>
     			</div>
   			</div>		
 		</div>
-	
+
 		<div class="col s12 m4">
+
+		    <div class="card-panel red">
+          		<span class="white-text center"><h4>Violations</h4>
+          		</span>
+        	</div>
+
 			<div class="card red">
 				<div class="card-content">
 					<div class="row">
 						<div class="col s12">
-							<h5 class="center white-text">Violations</h5>
+							<ul class="collection">
+						      	<li class="collection-item">11/20/2016</li>
+						      	<li class="collection-item">Carlo Jumagdao</li>
+						      	<li class="collection-item">Manila City Hall</li>
+						    </ul>
 							<ul class="collapsible" data-collapsible="accordion">
 								<li>
-								  <div class="collapsible-header">Date</div>
-								  <div class="collapsible-body white"><p>11/20/2016</p></div>
+								  <div class="collapsible-header"><img src="{!! URL::asset('../img/error.png') !!}" style="height: 30px; width: 30px;" class="right">  Beating the red light</div>
+								  <div class="collapsible-body white"><p>Details.</p>
+								  </div>
 								</li>
 								<li>
-								  <div class="collapsible-header">Enforcer</div>
-								  <div class="collapsible-body white"><p>Carlo Jumagdao</p></div>
-								</li>
-								<li>
-								  <div class="collapsible-header">Address</div>
-								  <div class="collapsible-body white"><p>Manila City Hall</p></div>
-								</li>
-								<li>
-								  <div class="collapsible-header">Violations</div>
-								  <div class="collapsible-body white"><p>Beating the red light</p>
-								  <p>Details..</p>
+								  <div class="collapsible-header" style=""><img src="{!! URL::asset('../img/error.png') !!}" style="height: 30px; width: 30px;" class="right">  No License</div>
+								  <div class="collapsible-body white"><p>Details.</p>
 								  </div>
 								</li>
 							 </ul>
 						</div>
 					</div> 
 				</div>
+				<div class="card-action center">
+        			<a class="waves-effect waves-light btn red lighten-2"><i class="material-icons left">payment</i>Bank</a>
+					<a class="waves-effect waves-light btn red lighten-2" id = 'btnSubmit'><i class="material-icons right">print</i>PDF</a>
+        		</div>
 			</div>           	
 		</div>
 
 		<div class="col s12 m4">
+
+		    <div class="card-panel green">
+          		<span class="white-text center"><h4>Transaction History</h4>
+          		</span>
+        	</div>
+
 	  		<div class="card green">
             	<div class="card-content">
-            		<div class="card-title center">
-            			Transaction History
-            		</div>
 				 		<ul class="collection">
 				    	<li class="collection-item avatar">
 				      	<img src="{!! URL::asset('../img/officer.png') !!}"" alt="" class="circle">
