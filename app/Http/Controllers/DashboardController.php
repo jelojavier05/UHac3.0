@@ -15,8 +15,9 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $id = $request->session()->get("id");
         $ViolationDetails = DB::select('SELECT d.strDrivLicense, d.strDrivAccNo, d.strDrivUname, m.strMunicName, r.strRuleDesc, r.dblRuleFine, vh.blStatus, e.intEnfoId, CONCAT(e.strEnfoFname," ",e.strEnfoLname) AS EnfoFullName, vh.datToday
             FROM tblViolationHeader AS vh
                 INNER JOIN tblViolationDetail AS vd
@@ -45,17 +46,17 @@ class DashboardController extends Controller
                     ON e.intEnfoMunicipal = m.intMunicipalId
                 WHERE d.strDrivLicense = "D06-11-009386" AND vh.blStatus = 1');
 
-        $DriverDetails = DB::select('SELECT CONCAT(d.strDrivFname," ",d.strDrivLname) AS "FullName", d.strDrivLicense, d.datExpiration, lt.strLicenseType 
-                FROM tblDriver AS d
-                    INNER JOIN tblLicenseType AS lt
-                        ON d.intLicenseType = lt.intLicenseId
-                        WHERE d.strDrivLicense = "D06-11-009386"');
-        foreach ($DriverDetails as $value) {
-            $strFullName = $value->FullName;
-            $strLicense = $value->strDrivLicense;
-            $strLicenseType = $value->strLicenseType;
-            $datExpiration = $value->datExpiration;
-        }
+        $DriverDetails = DB::table('tblDriver')
+            ->join('tblLicenseType', 'tblLicenseType.intLicenseId', '=' ,'tblDriver.intLicenseType')
+            ->select('*')
+            ->where('strDrivLicense', $id)
+            ->first();
+
+            $strFullName = $DriverDetails->strDrivFname . ' ' . $DriverDetails->strDrivLname;
+            $strLicense = $DriverDetails->strDrivLicense;
+            $strLicenseType = $DriverDetails->strLicenseType;
+            $datExpiration = $DriverDetails->datExpiration;
+    
         $strMunicipal = "";
         $strEnfoFullName = "";
         $datViolationDay = "";
@@ -80,6 +81,7 @@ class DashboardController extends Controller
             $intVioCounter2++;
             break;
         }
+
         return view('dashboard', ['FullName' => $strFullName, 'License' => $strLicense, 'LicenseType' => $strLicenseType, 'datExpiration' => $datExpiration, 'datViolationDay' => $datViolationDay, 'strMunicipal' => $strMunicipal, 'strEnfoFullName' => $strEnfoFullName, 'intVioCounter' => $intVioCounter, 'ViolationDetails' => $ViolationDetails]);
     }
 
