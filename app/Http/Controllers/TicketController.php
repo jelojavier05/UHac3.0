@@ -48,7 +48,6 @@ class TicketController extends Controller
         $licenseNumber = $request->session()->get('licenseNumber');
         $arrViolation = $request->session()->get('arrViolation');
         $enforcerID = $request->session()->get('id');
-        $enforcerID = 1;
 
         $violationHeaderID = DB::table('tblViolationHeader')->insertGetId([
             'intVHEnfoId' => $enforcerID,

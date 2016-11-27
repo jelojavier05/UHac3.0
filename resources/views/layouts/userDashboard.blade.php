@@ -28,7 +28,7 @@
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Logout</a></li>
+        <li><a id = 'logout'>Logout</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         
@@ -43,6 +43,25 @@
 <div>
 	@yield('dashBoard')
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#logout').click(function(){
+      $.ajax({
+        type: "GET",
+        url: "{{action('LoginController@logout')}}",
+        success: function(data){
+            window.location.href = '{{ URL::to("/") }}';
+        },
+        error: function(data){
+          var toastContent = $('<span>Error Occured. </span>');
+          Materialize.toast(toastContent, 1500,'red', 'edit');
+
+        }
+      });//ajax
+    });
+  });
+</script>
 
 	@yield('scripts')
 
