@@ -41,6 +41,8 @@ Route::get('/driver', 'DriverController@getDriver');
 
 Route::get('/user', 'LoginController@index');
 
+Route::get('/report', 'ReportController@index');
+
 Route::post('/driverlogin', 'LoginController@loginDriver');
 Route::post('/enforcerlogin', 'LoginController@loginEnforcer');
 Route::post('/companylogin', 'LoginController@loginCompany');
