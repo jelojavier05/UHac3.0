@@ -62,6 +62,36 @@
     });    
 	</script>
 
-	
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#btnSubmit').click(function(){
+		$.ajax({
+			type: "POST",
+			url: "{{action('ReportController@store')}}",
+			beforeSend: function (xhr) {
+				var token = $('meta[name="csrf_token"]').attr('content');
+
+				if (token) {
+					  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+				}
+			},
+			data: {
+				strDescription: $("#report").val()
+			},
+			success: function(data){
+				confirm('success');
+				window.location.href = '{{ URL::to("/dashboard") }}';
+			},
+			error: function(data){
+				var toastContent = $('<span>Error Occured. </span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+
+			}
+		});//ajax
+	});
+});
+</script>
+
+
 </body>
 </html>

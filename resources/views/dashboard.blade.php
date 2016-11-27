@@ -106,7 +106,7 @@
 
 								@if($intVioCounter > 0)
 						      	<li class="collection-item">{{date('M j, Y h:i A',strtotime($datViolationDay))}}</li>
-						      	<li class="collection-item">Officer: {{$strEnfoFullName}} <a href="#!" class="secondary-content" type="button"><img src="{!! URL::asset('../img/report.png') !!}" style="height:30px; width: 30px; margin-top: -5px;" class="secondary-content"></a></li>
+						      	<li class="collection-item">Officer: {{$strEnfoFullName}} <a href='{{ URL::to("/report") }}'' class="secondary-content btnReport" type="button" id = '{{$enforcerID}}'><img src="{!! URL::asset('../img/report.png') !!}" style="height:30px; width: 30px; margin-top: -5px;" class="secondary-content"></a></li>
 						      	<li class="collection-item">Location: {{$strMunicipal}}</li>
 						      	
 						      	@else
@@ -217,5 +217,25 @@
        document.write("You have entered : " + retVal);
     }
  //-->
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".btnReport").click(function(){
+		var id = this.id;
+		$.ajax({
+			type: "GET",
+			url: "/report/create?enforcerID=" + id,
+			success: function(data){
+
+			},
+			error: function(data){
+				var toastContent = $('<span>Error Occured. </span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+			}
+		});//ajax
+	});
+});
 </script>
 @endsection
