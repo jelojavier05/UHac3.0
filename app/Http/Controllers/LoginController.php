@@ -6,56 +6,82 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use DB;
 
 class LoginController extends Controller
 {
-    public function index(){
-        return view('login');
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('/login');
     }
 
-    public function loginDriver(Request $request){
-        $driverID = DB::table('tblDriver')
-            ->select('intDrivId', 'strDrivLicense')
-            ->where('strDrivUname', $request->username)
-            ->where('strDrivPword', $request->password)
-            ->first();
-        if(is_null($driverID)){
-            return response()->json(false);
-        }else{
-            $request->session()->put('id', $driverID->strDrivLicense);
-            return response()->json(true);
-        }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
-    public function loginEnforcer(Request $request){
-        $enforcerID = DB::table('tblEnforcer')
-            ->select('intEnfoId')
-            ->where('strUsername', $request->username)
-            ->where('strPassword', $request->password)
-            ->first();
-        if(is_null($enforcerID)){
-            return response()->json(false);
-        }else{
-            $request->session()->put('id', $enforcerID->intEnfoId);
-            return response()->json(true);
-        }
-    }  
-    public function loginCompany(Request $request){
-        $companyID = DB::table('tblMunicipal')
-            ->select('intMunicipalId')
-            ->where('strUsername', $request->username)
-            ->where('strPassword', $request->password)
-            ->first();
-        if(is_null($companyID)){
-            return response()->json(false);
-        }else{
-            $request->session()->put('id', $companyID->intMunicipalId);
-            return response()->json(true);
-        }
-    }   
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
-    public function logout(Request $request){
-        $request->session()->flush();
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

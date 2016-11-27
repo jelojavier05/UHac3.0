@@ -25,7 +25,7 @@ Route::post('/dashboardCompany/claim', 'dashboardCompanyController@claimInCompan
 Route::get('/signup', 'SignUpController@index');
 Route::post('/signup/store', 'DriverController@store');
 Route::post('/driver/update', 'DriverController@updateDriver');
-// Route::post('/signup/store', 'SignUpController@store');
+Route::post('/signup/store', 'SignUpController@store');
 
 Route::get('/ticketing', 'TicketController@index');
 Route::post('/ticketing/create', 'TicketController@create');
@@ -38,11 +38,4 @@ Route::get('/payment', 'PaymentController@index');
 Route::post('/payment/add', 'PaymentController@transact');
 
 Route::get('/driver', 'DriverController@getDriver');
-
 Route::get('/user', 'LoginController@index');
-
-Route::post('/driverlogin', 'LoginController@loginDriver');
-Route::post('/enforcerlogin', 'LoginController@loginEnforcer');
-Route::post('/companylogin', 'LoginController@loginCompany');
-
-Route::get('logout/', 'LoginController@logout');

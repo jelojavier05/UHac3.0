@@ -40,15 +40,15 @@
                             </div>
                         </div>
             		<div class="card-content white-text" style="border-radius: 100px;">
-              			   <div class="container">
+              			
 	              			<div class="row black-text">
-							    <form class="col s12 m12 black-text">
+							    <form class="col s12 black-text">
 							      	  <div class="row">
-                                        <label class="col s6 m3">Date:</label>
-                                        <label id="Date" class="col s6 m3">2016-11-26</label>
+                                        <label class="col s6 m2 push-m4">Date:</label>
+                                        <label id="Date" class="col s6 m2 push-m4">2016-11-26</label>
                                                 
                                         <label class="col s6 m2">Enforcer Name:</label>
-                                        <label id="EnforcerName" class="col s6 m3">Dalisay, Kardo</label>
+                                        <label id="EnforcerName" class="col s6 m2">Dalisay, Kardo</label>
                                             
                                       </div>
                                         

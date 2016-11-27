@@ -4,8 +4,6 @@
 
 @endsection
 
-<<<<<<< HEAD
-=======
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" href="{!! URL::asset('../css/materialize.min.css') !!}">
@@ -16,7 +14,6 @@
 	<script type="text/javascript" src="{!! URL::asset('../js/materialize.js') !!}"></script>
     
 
->>>>>>> e5594347b0dc4988c381219a10ec21a2c3d02088
 @section('navigation')
 <!-- Dropdown Structure -->
 <div class="navbar-fixed">
@@ -42,8 +39,7 @@
 
 @section('body')
 
-<div class="container">
-   <div class="fullscreen slider fixed">
+  <div class="fullscreen slider">
     <ul class="slides">
       <li>
         <img src="{!! URL::asset('../img/background3.jpg') !!}"> 
@@ -56,20 +52,6 @@
         <img src="{!! URL::asset('../img/background1.jpg') !!}">
       </li>
     </ul>
-<<<<<<< HEAD
-    <div class="card">
-      <div class="card-content">
-        <ul id="LoginDropdown" class="dropdown-content">
-          <li><a href="#!"><img src="{!! URL::asset('../img/D.png') !!}" style="height: 50px;"></a></li>
-          <li><a href="#!"><img src="{!! URL::asset('../img/E.png') !!}" style="height: 50px;"></a></li>
-          <li><a href="#!"><img src="{!! URL::asset('../img/C.png') !!}" style="height: 50px;"></a></li>
-          <li class="divider"></li>
-        </ul>
-      </div>
-    </div>
-  </div> 
-</div> 
-=======
   </div>
     <br><br><br><br>
     <br><br><br><br>
@@ -101,7 +83,6 @@
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
   </div>
->>>>>>> e5594347b0dc4988c381219a10ec21a2c3d02088
 
   <script type="text/javascript">
   	$(document).ready(function(){

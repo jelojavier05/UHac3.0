@@ -34,6 +34,7 @@
               			<span class="card-title"><img src="{!! URL::asset('../img/car.png') !!}" style="height: 100px ; width: 100px ;"></span>
 <<<<<<< HEAD
                             <h4 class="black-text">Sign in to Hooleh</h4>
+<<<<<<< HEAD
                             <div class="row">
 <<<<<<< HEAD
                                 <p>
@@ -63,6 +64,8 @@
 >>>>>>> origin/master
                                   <label for="driver">Driver</label>
                             </div>
+=======
+>>>>>>> parent of af70fd3... Merge remote-tracking branch 'origin/master'
 	              			<div class="row black-text">
                                 <div class="container">
                                     <form class="col s12 black-text">
@@ -92,110 +95,5 @@
         	</div>
       	</div>
 	</div>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('#btnSubmit').click(function(){
-      var identifier = $('input[name=group1]:checked').val();
-      if (identifier == 1){
-        driverCheck();
-      }else if (identifier == 2){
-        enforcerCheck();
-      }else if (identifier == 3){
-        companyCheck();
-      }
-    });
-
-    function driverCheck(){
-      $.ajax({
-          type: "POST",
-          url: "{{action('LoginController@loginDriver')}}",
-          beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-          },
-          data:{
-            username: $('#userName').val(),
-            password: $('#password').val()
-          },
-          success: function(data){
-            if(data){
-              window.location.href = '{{ URL::to("/dashboard") }}';
-            }else{
-              confirm('Incorrect Login.');
-            }
-          },
-          error: function(data){
-            var toastContent = $('<span>Error Occured. </span>');
-            Materialize.toast(toastContent, 1500,'red', 'edit');
-
-          }
-        });//ajax
-    }
-
-    function enforcerCheck(){
-      $.ajax({
-          type: "POST",
-          url: "{{action('LoginController@loginEnforcer')}}",
-          beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-          },
-          data:{
-            username: $('#userName').val(),
-            password: $('#password').val()
-          },
-          success: function(data){
-            if(data){
-              window.location.href = '{{ URL::to("/dashboardEnforcer") }}';
-            }else{
-              confirm('Incorrect Login.');
-            }
-          },
-          error: function(data){
-            var toastContent = $('<span>Error Occured. </span>');
-            Materialize.toast(toastContent, 1500,'red', 'edit');
-
-          }
-        });//ajax
-    }
-
-    function companyCheck(){
-      $.ajax({
-          type: "POST",
-          url: "{{action('LoginController@loginCompany')}}",
-          beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-
-            if (token) {
-                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-          },
-          data:{
-            username: $('#userName').val(),
-            password: $('#password').val()
-          },
-          success: function(data){
-            if(data){
-              window.location.href = '{{ URL::to("/dashboardCompany") }}';
-            }else{
-              confirm('Incorrect Login.');
-            }
-          },
-          error: function(data){
-            var toastContent = $('<span>Error Occured. </span>');
-            Materialize.toast(toastContent, 1500,'red', 'edit');
-
-          }
-        });//ajax
-    }
-  });
-</script>
 </body>
 </html>
