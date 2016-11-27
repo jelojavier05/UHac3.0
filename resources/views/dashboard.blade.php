@@ -106,7 +106,7 @@
 
 								@if($intVioCounter > 0)
 						      	<li class="collection-item">{{date('M j, Y h:i A',strtotime($datViolationDay))}}</li>
-						      	<li class="collection-item">Officer: {{$strEnfoFullName}}</li>
+						      	<li class="collection-item">Officer: {{$strEnfoFullName}} <a href="#!" class="secondary-content" type="button"><img src="{!! URL::asset('../img/report.png') !!}" style="height:30px; width: 30px; margin-top: -5px;" class="secondary-content"></a></li>
 						      	<li class="collection-item">Location: {{$strMunicipal}}</li>
 						      	
 						      	@else
@@ -136,6 +136,7 @@
 				</div>
 				<div class="card-action center red darken-1">
         			<a class="waves-effect waves-light btn red lighten-1 paywithbank" type="button" value="Click Me"><i class="material-icons left">payment</i>Pay with Bank</a>
+                    
         		</div>
 			</div>	    	
 	    </div>

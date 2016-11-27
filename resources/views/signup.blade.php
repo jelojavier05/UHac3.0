@@ -31,7 +31,7 @@
         	<div class="col s12 m8 push-m6">
           		<div class="card" style="opacity: -10px;">
             		<div class="card-content white-text" style="border-radius: 100px;">
-              			<span class="card-title"><img src="{!! URL::asset('../img/car.png') !!}" style="height: 100px ; width: 100px ;"></span>
+              			<span class="card-title"><img src="{!! URL::asset('../img/Hooleh.png') !!}" style="height: 100px ; width: auto ;"></span>
 	              			<div class="row black-text">
 							    <form class="col s12 black-text">
 							      	<div class="row">
@@ -90,7 +90,6 @@
 						    </div>
             		</div>
             		<div class="card-action center">
-	            		<a class="waves-effect waves-light btn red lighten-1"><i class="material-icons left">cancel</i>cancel</a>
 						<a class="waves-effect waves-light btn green lighten-1" id = 'btnSubmit'><i class="material-icons right">done</i>submit</a>
             		</div>
           		</div>
@@ -141,6 +140,7 @@
 					},
 					success: function(data){
 						confirm('success');
+						window.location.href = '{{ URL::to("/") }}';
 					},
 					error: function(data){
 						var toastContent = $('<span>Error Occured. </span>');
