@@ -55,6 +55,8 @@ class DashboardController extends Controller
         $strEnfoFullName = "";
         $datViolationDay = "";
         $intVioCounter = 0;
+        $enforcerID = "";
+        $strAddress = "";
         foreach ($ViolationDetails as $value) {
             $intVHId = $value->intVHId;
             $strMunicipal = $value->strMunicName;
