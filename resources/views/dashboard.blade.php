@@ -224,7 +224,6 @@
 $(document).ready(function(){
 	$(".btnReport").click(function(){
 		var id = this.id;
-		confirm(id);
 		$.ajax({
 			type: "GET",
 			url: "/report/create?enforcerID=" + id,
