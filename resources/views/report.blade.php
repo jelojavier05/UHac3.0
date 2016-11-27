@@ -22,23 +22,22 @@
 <body id="signupBody">
 
 	<div style='position:absolute;z-index:0;left:0;top:0;width:100%;height:100%'>
-  		<img src="{!! URL::asset('../img/background1.jpg') !!}" style='width:100%;height:100%' alt='[]' />
+  		<img src="{!! URL::asset('../img/background3.jpg') !!}" style='width:100%;height:auto:background-size:cover;' alt='[]' />
 	</div>
 
 	<div class="container caption center align">
       	<div class="row">
       		<br>
-        	<div class="col s12 m8 push-m6">
+        	<div class="col s12 m8 push-m2">
           		<div class="card" style="opacity: -10px;">
             		<div class="card-content white-text" style="border-radius: 100px;">
-              			<span class="card-title"><img src="{!! URL::asset('../img/car.png') !!}" style="height: 100px ; width: 100px ;"></span>
+              			<span class="card-title"><img src="{!! URL::asset('../img/Hooleh.png') !!}" style="height: 100px ; width: auto ;"></span>
                             <div class="container">
-	              			<div class="row black-text">
+	              			<div class="row black-text center">
+                                <h4>Report Enforcer</h4>
 							    <form class="col s12 black-text">
-							      	<div class="row">
-
-							        	
-							        	<div class="input-field col s6">
+							      	<div class="row">							        	
+							        	<div class="input-field col s12">
 							          		<input placeholder="Report Message" id="report" type="text" class="validate">
 							          		<label for="first_name">Report Enforcer</label>
 							        	</div>
@@ -49,7 +48,7 @@
                             </div>
             		</div>
             		<div class="card-action center">
-						<a class="waves-effect waves-light btn green lighten-1" id = 'btnSubmit'><i class="material-icons right">done</i>submit</a>
+						<a class="waves-effect waves-light btn green lighten-1" id = 'btnSubmit'><i class="material-icons right">send</i>submit</a>
             		</div>
           		</div>
         	</div>

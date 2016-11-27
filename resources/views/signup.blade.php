@@ -31,7 +31,7 @@
         	<div class="col s12 m8 push-m6">
           		<div class="card" style="opacity: -10px;">
             		<div class="card-content white-text" style="border-radius: 100px;">
-              			<span class="card-title"><img src="{!! URL::asset('../img/car.png') !!}" style="height: 100px ; width: 100px ;"></span>
+              			<span class="card-title"><img src="{!! URL::asset('../img/Hooleh.png') !!}" style="height: 100px ; width: auto ;"></span>
 	              			<div class="row black-text">
 							    <form class="col s12 black-text">
 							      	<div class="row">

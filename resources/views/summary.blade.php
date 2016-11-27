@@ -40,15 +40,15 @@
                             </div>
                         </div>
             		<div class="card-content white-text" style="border-radius: 100px;">
-              			
+              			<div class="container">
 	              			<div class="row black-text">
 							    <form class="col s12 black-text">
 							      	  <div class="row">
-                                        <label class="col s6 m2 push-m4">Date:</label>
-                                        <label id="Date" class="col s6 m2 push-m4">2016-11-26</label>
+                                        <label class="col s6 m3 ">Date:</label>
+                                        <label id="Date" class="col s6 m3 ">2016-11-26</label>
                                                 
-                                        <label class="col s6 m2">Enforcer Name:</label>
-                                        <label id="EnforcerName" class="col s6 m2">Dalisay, Kardo</label>
+                                        <label class="col s6 m3">Enforcer Name:</label>
+                                        <label id="EnforcerName" class="col s6 m3">Dalisay, Kardo</label>
                                             
                                       </div>
                                         
@@ -61,11 +61,11 @@
                                                 <label class="col s6 m3">Driver Name:</label>
                                                 <label id="DriverName" class="col s6 m3">{{$summary->driverData->strDrivFname}} {{$summary->driverData->strDrivLname}}</label>
                                             
-                                                <label class="col s6">License Type:</label>
-                                                <label id="DriverLicenseType" class="col s6">{{$summary->driverData->strLicenseType}}</label>
+                                                <label class="col s6 m3">License Type:</label>
+                                                <label id="DriverLicenseType" class="col s3 m3">{{$summary->driverData->strLicenseType}}</label>
                                                 
-                                                <label class="col s6">Driver License Expiration:</label>
-                                                <label id="DriverLicenseExpiration" class="col s6">{{$summary->driverData->strDate}}</label>
+                                                <label class="col s6 m3">Driver License Expiration:</label>
+                                                <label id="DriverLicenseExpiration" clabnss="col s6 m3">{{$summary->driverData->strDate}}</label>
                                             </div>
                                         
                                             <div class="row">
