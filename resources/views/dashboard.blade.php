@@ -132,6 +132,7 @@
 				</div>
 				<div class="card-action center red darken-1">
         			<a class="waves-effect waves-light btn red lighten-1 paywithbank" type="button" value="Click Me"><i class="material-icons left">payment</i>Pay with Bank</a>
+                    <a class="waves-effect waves-light btn red lighten-1" type="button" value="Click Me"><i class="material-icons left">report</i>Report Enforcer</a>
         		</div>
 			</div>	    	
 	    </div>
