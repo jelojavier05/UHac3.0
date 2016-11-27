@@ -18,10 +18,14 @@
 	                )) !!}
 	            </div>
 	        @endif
-	        @if (Session::has('message'))
-	            <div class="card blue">
-	                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	                {{ Session::get('message') }}
+	        @if (Session::has('manage'))
+	            <div class="card white">
+	            	<div class="card-content green white-text">
+		     			<span class="card-title">Success!</span>
+		                <?php $manage = Session::get('manage'); ?>
+		                <p>Transaction ID: {{$manage['transaction_id']}}<br/>
+		                Confirmation No.: {{$manage['confirmation_no']}}<br/></p>
+	                </div>
 	            </div>
 	        @endif
 	    	</div>
@@ -126,7 +130,7 @@
 
 
 							 </ul>
-							 <h5 class="right white">Total Amount: P <b>{{number_format($dblTotalFine)}}</b></h5>
+							 <h5 class="right white-text">Total Amount: P <b>{{number_format($dblTotalFine)}}</b></h5>
 						</div>
 					</div> 
 				</div>
@@ -136,26 +140,27 @@
 			</div>	    	
 	    </div>
 	    <div class="col s12 m4 l4">
-            <table class="striped white" style="border-radius:10px;" id="dataTable">
-                <thead>
-                    <tr>
-                        <th style="width:100px;" class="green darken-3 white-text">Date</th>
-                        <th style="width:150px;" class="green darken-2 white-text">Arresting Officer</th>
-						<th style="width:150px;" class="green darken-1 white-text">Amount</th>
-                        <th class="green white-text">Violation/s</th>
-                    </tr>
-                </thead>
-                <tbody>
-                	@foreach($history AS $detail)
-                	<tr>
-                		<td>{{date('M j, Y h:i A',strtotime($detail->datToday))}}</td>
-                		<td>{{$detail->EnfoFullName}}</td>
-                		<td>P {{number_format($detail->dblRuleFine)}}</td>
-                		<td>{{$detail->strRuleDesc}}</td>
-                	</tr>
-                	@endforeach
-                </tbody>
-            </table>	
+	    	<div class="card">
+	    		<div class="card-content">
+	    			<span class="card-title">Violation History</span>
+		            <table class="stripped highlight" >
+		                <thead>
+		                    <tr>
+		                        <th>Date</th>
+								<th>Arresting Officer</th>
+		                    </tr>
+		                </thead>
+		                <tbody>
+		                	@foreach($history AS $detail)
+		                	<tr>
+		                		<td>{{date('M j, Y h:i A',strtotime($detail->datToday))}}</td>
+		                		<td>{{$detail->EnfoFullName}}</td>
+		                	</tr>
+		                	@endforeach
+		                </tbody>
+		            </table>
+	            </div>	
+            </div>
 	    </div>
 	    <div class="hide">
 	        <form method="POST" action="{{ URL::to('/payment/add') }}" id="pay">
@@ -174,7 +179,7 @@
 		                { "orderable": false },
 		                null,
 		                ] ,  
-		                "pageLength":5,
+		                "pageLength":3,
 						"bLengthChange": false
 		            });
 		</script>

@@ -32,18 +32,12 @@ class DashboardController extends Controller
                     ON e.intEnfoMunicipal = m.intMunicipalId
                 WHERE d.strDrivLicense = '$id' AND vh.blStatus = 0");
 
-         $history = DB::select("SELECT d.strDrivLicense, d.strDrivAccNo, d.strDrivUname, m.strMunicName, r.strRuleDesc, r.dblRuleFine, vh.blStatus, e.intEnfoId, CONCAT(e.strEnfoFname,' ',e.strEnfoLname) AS EnfoFullName, vh.datToday
-            FROM tblViolationHeader AS vh
-                INNER JOIN tblViolationDetail AS vd
-                    ON vh.intVHid = vd.intVDVH
-                INNER JOIN tblDriver AS d
-                    ON vh.strVHDriver = d.strDrivLicense
-                INNER JOIN tblRules AS r
-                    ON vd.intDVRules = r.intRulesId
-                INNER JOIN tblEnforcer AS e
-                    ON vh.intVHEnfoId = e.intEnfoId
-                INNER JOIN tblMunicipal AS m
-                    ON e.intEnfoMunicipal = m.intMunicipalId
+
+         $history = DB::select("SELECT vh.*, CONCAT(e.strEnfoFname,' ',e.strEnfoLname) AS EnfoFullName FROM tblViolationHeader AS vh
+                INNER JOIN tblDriver AS d ON
+                vh.strVHDriver = d.strDrivLicense
+                INNER JOIN tblEnforcer AS e ON
+                vh.intVHEnfoId = e.intEnfoId
                 WHERE d.strDrivLicense = '$id' AND vh.blStatus > 0");
 
         $DriverDetails = DB::table('tblDriver')

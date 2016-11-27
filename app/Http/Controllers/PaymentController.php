@@ -102,8 +102,8 @@ class PaymentController extends Controller
 			  CURLOPT_HTTPHEADER => array(
 			    "accept: application/json",
 			    "content-type: application/json",
-			    "x-ibm-client-id:7c695a6c-43e0-409d-ad4e-3f73633db3e2",
-			    "x-ibm-client-secret:rH2rN7sX4yW1eA0rX6mX5wY2gM6gY5tI8iR3lP0jU3vE4bW8aE"
+			    "x-ibm-client-id:3cb17028-fb48-4d55-86c4-747e1792ef9b",
+			    "x-ibm-client-secret:pD7oB0jE1eO2pI0iH8lO7lL3eO3mP2hB1xX5kK5kU4gP1mJ0vG"
 			  ),
 			));
 
@@ -136,7 +136,7 @@ class PaymentController extends Controller
 			            $Payment->dblAmount = $dblTotalFine;
 			            $Payment->save();
 			            DB::commit();
-			            return redirect('/dashboard')->with('message', 'Success!');
+			            return redirect('/dashboard')->with('manage', $manage);
 					} catch(Exception $f){
 						DB::rollBack();
 						echo $f->getMessage();
