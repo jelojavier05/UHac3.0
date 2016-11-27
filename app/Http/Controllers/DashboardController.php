@@ -18,7 +18,7 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $id = $request->session()->get("id");
-        $ViolationDetails = DB::select("SELECT d.strDrivLicense, d.strDrivAccNo, d.strDrivUname, m.strMunicName, r.strRuleDesc, r.dblRuleFine, vh.blStatus, e.intEnfoId, CONCAT(e.strEnfoFname,' ',e.strEnfoLname) AS EnfoFullName, vh.datToday, vh.intVHId
+        $ViolationDetails = DB::select("SELECT e.intEnfoId, d.strDrivLicense, d.strDrivAccNo, d.strDrivUname, m.strMunicName, r.strRuleDesc, r.dblRuleFine, vh.blStatus, e.intEnfoId, CONCAT(e.strEnfoFname,' ',e.strEnfoLname) AS EnfoFullName, vh.datToday, vh.intVHId,m.strAddress
             FROM tblViolationHeader AS vh
                 INNER JOIN tblViolationDetail AS vd
                     ON vh.intVHid = vd.intVDVH
@@ -58,13 +58,15 @@ class DashboardController extends Controller
         foreach ($ViolationDetails as $value) {
             $intVHId = $value->intVHId;
             $strMunicipal = $value->strMunicName;
+            $strAddress = str_replace(" ","+",$value->strAddress);
             $strEnfoFullName = $value->EnfoFullName;
             $datViolationDay = $value->datToday;
+            $enforcerID = $value->intEnfoId;
             $intVioCounter++;
             break;
         }
 
-        return view('dashboard', ['history' => $history, 'FullName' => $strFullName, 'License' => $strLicense, 'LicenseType' => $strLicenseType, 'datExpiration' => $datExpiration, 'datViolationDay' => $datViolationDay, 'strMunicipal' => $strMunicipal, 'strEnfoFullName' => $strEnfoFullName, 'intVioCounter' => $intVioCounter, 'ViolationDetails' => $ViolationDetails,'strDrivAccNo' => $strDrivAccNo, 'intVHId' => $intVHId]);
+        return view('dashboard', ['history' => $history, 'FullName' => $strFullName, 'License' => $strLicense, 'LicenseType' => $strLicenseType, 'datExpiration' => $datExpiration, 'datViolationDay' => $datViolationDay, 'strMunicipal' => $strMunicipal, 'strEnfoFullName' => $strEnfoFullName, 'intVioCounter' => $intVioCounter, 'ViolationDetails' => $ViolationDetails,'strDrivAccNo' => $strDrivAccNo, 'intVHId' => $intVHId, 'enforcerID' => $enforcerID,'strAddress' => $strAddress]);
     }
 
     /**

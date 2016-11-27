@@ -107,7 +107,7 @@
 								@if($intVioCounter > 0)
 						      	<li class="collection-item">{{date('M j, Y h:i A',strtotime($datViolationDay))}}</li>
 						      	<li class="collection-item">Officer: {{$strEnfoFullName}} <a href="#!" class="secondary-content" type="button"><img src="{!! URL::asset('../img/report.png') !!}" style="height:30px; width: 30px; margin-top: -5px;" class="secondary-content"></a></li>
-						      	<li class="collection-item">Location: {{$strMunicipal}}<a href="http://maps.google.com/maps?saddr=new+york&daddr=baltimore" class="secondary-content" type="button" target="_blank"><img src="{!! URL::asset('../img/map_pin.png') !!}" style="width: 25px; margin-top: -5px;" class="secondary-content"></a></li>
+						      	<li class="collection-item">Location: {{$strMunicipal}}<a href="http://maps.google.com/maps?daddr={{$strAddress}}" class="secondary-content" type="button" target="_blank"><img src="{!! URL::asset('../img/map_pin.png') !!}" style="width: 25px; margin-top: -5px;" class="secondary-content"></a></li>
 						      	
 						      	@else
 						      	<li class="collection-item center">You don't have any violation!</li>
@@ -217,5 +217,25 @@
        document.write("You have entered : " + retVal);
     }
  //-->
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".btnReport").click(function(){
+		var id = this.id;
+		$.ajax({
+			type: "GET",
+			url: "/report/create?enforcerID=" + id,
+			success: function(data){
+
+			},
+			error: function(data){
+				var toastContent = $('<span>Error Occured. </span>');
+				Materialize.toast(toastContent, 1500,'red', 'edit');
+			}
+		});//ajax
+	});
+});
 </script>
 @endsection

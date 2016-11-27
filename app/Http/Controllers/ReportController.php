@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Input;
+use DB;
 class ReportController extends Controller
 {
     /**
@@ -24,9 +25,11 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $enforcerID = Input::get('enforcerID');
+        $request->session()->put('enforcerReportID', $enforcerID);
+
     }
 
     /**
@@ -37,7 +40,16 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $enforcerID = $request->session()->get('enforcerReportID');
+        $driverID  = $request->session()->get('id');
+        $description = $request->strDescription;
+
+        DB::table('tblReport')->insert([
+            'strDriverLicense' => $driverID,
+            'intEnforcerID' => $enforcerID,
+            'strDescription' => $description
+        ]);
+
     }
 
     /**
