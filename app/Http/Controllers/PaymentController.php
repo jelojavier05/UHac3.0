@@ -57,28 +57,37 @@ class PaymentController extends Controller
 	}
 
 	public function transact(Request $request){
+		
+		$strIds = DB::table('tblPayment')->select('strTransactionId')->get();
+		foreach($strIds as $strId){
+            $strLatest = $strId->strTransactionId;
+        }
+        $counter = new SmartCounter();
+        $strCounter = $counter->smartcounter($strLatest);
+
 		$rules = array(
-			'transId' => 'required',
-			'PaidTo' => 'required',
-            'amount' => 'required',
+			'strDrivAccNo' => 'required',
+			'strMunicipal' => 'required',
+            'dblTotalFine' => 'required',
 		);
 		$messages = [
 		    'required' => 'The :attribute field is required.',
 		];
 		$niceNames = array(
-		    'transId' => 'Transaction ID',
-		    'PaidTo' => 'Paid To',
-		    'amount' => 'Amount',
+		    'strDrivAccNo' => 'Account Number',
+		    'strMunicipal' => 'Municipal',
+		    'dblTotalFine' => 'Total Fine',
 		);
         $validator = Validator::make($request->all(),$rules,$messages);
         $validator->setAttributeNames($niceNames); 
         if ($validator->fails()) {
-            // return Redirect::route('/Payment')->withErrors($validator);
+            return Redirect::back()->withErrors($validator);
         }
         try{
-        	$transId = $request->input('transId');
-        	$PaidTo = $request->input('PaidTo');
-        	$amount = $request->input('amount');
+        	$strDrivAccNo = $request->input('strDrivAccNo');
+        	$strMunicipal = $request->input('strMunicipal');
+        	$dblTotalFine = $request->input('dblTotalFine');
+        	$intVHId = $request->input('intVHId');
         	$curl = curl_init();
 
 			curl_setopt_array($curl, array(
@@ -89,7 +98,7 @@ class PaymentController extends Controller
 			  CURLOPT_TIMEOUT => 30,
 			  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			  CURLOPT_CUSTOMREQUEST => "POST",
-			  CURLOPT_POSTFIELDS => "{\"channel_id\":\"BLUEMIX\",\"transaction_id\":\"$transId\",\"source_account\":\"100188510270\",\"source_currency\":\"php\",\"biller_id\":\"$PaidTo\",\"reference1\":\"000000000A\",\"reference2\":\"000000000B\",\"reference3\":\"000000000C\",\"amount\":$amount}",
+			  CURLOPT_POSTFIELDS => "{\"channel_id\":\"BLUEMIX\",\"transaction_id\":\"$strCounter\",\"source_account\":\"$strDrivAccNo\",\"source_currency\":\"php\",\"biller_id\":\"$strMunicipal\",\"reference1\":\"000000000A\",\"reference2\":\"000000000B\",\"reference3\":\"000000000C\",\"amount\":$dblTotalFine}",
 			  CURLOPT_HTTPHEADER => array(
 			    "accept: application/json",
 			    "content-type: application/json",
@@ -108,34 +117,35 @@ class PaymentController extends Controller
 			} else {
 				$manage = (array) json_decode($response);
 				if($manage['status'] == 'F'){
-					// Redirect with error message
+					return Redirect::back()->withErrors($manage);
 				} else {
 					try{
 						DB::beginTransaction();  
 
 						$strDate =  date('Y-m-d');
-					  	$VH = ViolationHeader::find(4);
+					  	$VH = ViolationHeader::find($intVHId);
 			            $VH->blStatus = 1;
 			            $VH->datDatePaid = $strDate;
 			            $VH->strConfirmationNo = $manage['confirmation_no'];
 			            $VH->save();
 
 			            $Payment = new Payment();
-			            $Payment->strTransactionId = $transId;	
-			            $Payment->strViolationHeaderId = 4;
-			            $Payment->strPaidTo = $PaidTo;
-			            $Payment->dblAmount = $amount;
+			            $Payment->strTransactionId = $strCounter;	
+			            $Payment->strViolationHeaderId = $intVHId;
+			            $Payment->strPaidTo = $strMunicipal;
+			            $Payment->dblAmount = $dblTotalFine;
 			            $Payment->save();
 			            DB::commit();
+			            return redirect('/dashboard')->with('message', 'Success!');
 					} catch(Exception $f){
 						DB::rollBack();
-						$f->getMessage();
+						echo $f->getMessage();
 					}
-					
 				}
 			}
         } catch(Exception $e){
-        	$e->getMessage();
+        	echo $e->getMessage();
+        	
         }
 	}
 }

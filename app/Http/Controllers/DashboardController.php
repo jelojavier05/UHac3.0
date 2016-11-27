@@ -18,7 +18,7 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $id = $request->session()->get("id");
-        $ViolationDetails = DB::select('SELECT d.strDrivLicense, d.strDrivAccNo, d.strDrivUname, m.strMunicName, r.strRuleDesc, r.dblRuleFine, vh.blStatus, e.intEnfoId, CONCAT(e.strEnfoFname," ",e.strEnfoLname) AS EnfoFullName, vh.datToday
+        $ViolationDetails = DB::select("SELECT d.strDrivLicense, d.strDrivAccNo, d.strDrivUname, m.strMunicName, r.strRuleDesc, r.dblRuleFine, vh.blStatus, e.intEnfoId, CONCAT(e.strEnfoFname,' ',e.strEnfoLname) AS EnfoFullName, vh.datToday, vh.intVHId
             FROM tblViolationHeader AS vh
                 INNER JOIN tblViolationDetail AS vd
                     ON vh.intVHid = vd.intVDVH
@@ -30,9 +30,9 @@ class DashboardController extends Controller
                     ON vh.intVHEnfoId = e.intEnfoId
                 INNER JOIN tblMunicipal AS m
                     ON e.intEnfoMunicipal = m.intMunicipalId
-                WHERE d.strDrivLicense = "D06-11-009386" AND vh.blStatus = 0');
+                WHERE d.strDrivLicense = '$id' AND vh.blStatus = 0");
 
-         $ViolationDetails2 = DB::select('SELECT d.strDrivLicense, d.strDrivAccNo, d.strDrivUname, m.strMunicName, r.strRuleDesc, r.dblRuleFine, vh.blStatus, e.intEnfoId, CONCAT(e.strEnfoFname," ",e.strEnfoLname) AS EnfoFullName, vh.datToday
+         $history = DB::select("SELECT d.strDrivLicense, d.strDrivAccNo, d.strDrivUname, m.strMunicName, r.strRuleDesc, r.dblRuleFine, vh.blStatus, e.intEnfoId, CONCAT(e.strEnfoFname,' ',e.strEnfoLname) AS EnfoFullName, vh.datToday
             FROM tblViolationHeader AS vh
                 INNER JOIN tblViolationDetail AS vd
                     ON vh.intVHid = vd.intVDVH
@@ -44,24 +44,25 @@ class DashboardController extends Controller
                     ON vh.intVHEnfoId = e.intEnfoId
                 INNER JOIN tblMunicipal AS m
                     ON e.intEnfoMunicipal = m.intMunicipalId
-                WHERE d.strDrivLicense = "D06-11-009386" AND vh.blStatus = 1');
+                WHERE d.strDrivLicense = '$id' AND vh.blStatus > 0");
 
         $DriverDetails = DB::table('tblDriver')
             ->join('tblLicenseType', 'tblLicenseType.intLicenseId', '=' ,'tblDriver.intLicenseType')
             ->select('*')
             ->where('strDrivLicense', $id)
             ->first();
-
+            $strDrivAccNo = $DriverDetails->strDrivAccNo;
             $strFullName = $DriverDetails->strDrivFname . ' ' . $DriverDetails->strDrivLname;
             $strLicense = $DriverDetails->strDrivLicense;
             $strLicenseType = $DriverDetails->strLicenseType;
             $datExpiration = $DriverDetails->datExpiration;
-    
+        $intVHId = 0;
         $strMunicipal = "";
         $strEnfoFullName = "";
         $datViolationDay = "";
         $intVioCounter = 0;
         foreach ($ViolationDetails as $value) {
+            $intVHId = $value->intVHId;
             $strMunicipal = $value->strMunicName;
             $strEnfoFullName = $value->EnfoFullName;
             $datViolationDay = $value->datToday;
@@ -69,20 +70,7 @@ class DashboardController extends Controller
             break;
         }
 
-        $strMunicipal2 = "";
-        $strEnfoFullName2 = "";
-        $datViolationDay2 = "";
-        $intVioCounter2 = 0;
-
-        foreach ($ViolationDetails2 as $value2) {
-            $strMunicipal2 = $value2->strMunicName;
-            $strEnfoFullName2 = $value2->EnfoFullName;
-            $datViolationDay2 = $value2->datToday;
-            $intVioCounter2++;
-            break;
-        }
-
-        return view('dashboard', ['FullName' => $strFullName, 'License' => $strLicense, 'LicenseType' => $strLicenseType, 'datExpiration' => $datExpiration, 'datViolationDay' => $datViolationDay, 'strMunicipal' => $strMunicipal, 'strEnfoFullName' => $strEnfoFullName, 'intVioCounter' => $intVioCounter, 'ViolationDetails' => $ViolationDetails]);
+        return view('dashboard', ['history' => $history, 'FullName' => $strFullName, 'License' => $strLicense, 'LicenseType' => $strLicenseType, 'datExpiration' => $datExpiration, 'datViolationDay' => $datViolationDay, 'strMunicipal' => $strMunicipal, 'strEnfoFullName' => $strEnfoFullName, 'intVioCounter' => $intVioCounter, 'ViolationDetails' => $ViolationDetails,'strDrivAccNo' => $strDrivAccNo, 'intVHId' => $intVHId]);
     }
 
     /**

@@ -9,6 +9,22 @@
 
 	<div class="row">
   		<div class="col s12 m4 l4">
+	  		<div class="col-md-12">
+	        @if ($errors->any())
+	            <div class="card red">
+	                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	                {!! implode('', $errors->all(
+	                    '<li>:message</li>'
+	                )) !!}
+	            </div>
+	        @endif
+	        @if (Session::has('message'))
+	            <div class="card blue">
+	                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	                {{ Session::get('message') }}
+	            </div>
+	        @endif
+	    	</div>
     		<div class="card horizontal">
 		      	<div class="card-image">
 		        	<img src="{!! URL::asset('../img/officer2.png') !!}" style="height: 150px; width: 150px; margin-left: 140px;">
@@ -83,42 +99,42 @@
 						<div class="col s12">
 							<ul class="collection with-header">
 								<li class="collection-header"><h5  class="center">Violation</h5></li>
+
 								@if($intVioCounter > 0)
-						      	<li class="collection-item">{{$datViolationDay}}</li>
+						      	<li class="collection-item">{{date('M j, Y h:i A',strtotime($datViolationDay))}}</li>
 						      	<li class="collection-item">Officer: {{$strEnfoFullName}}</li>
 						      	<li class="collection-item">Location: {{$strMunicipal}}</li>
+						      	
 						      	@else
 						      	<li class="collection-item center">You don't have any violation!</li>
+						      
 						      	@endif
-						      	<li class="collection-item">Jan. 20, 2016</li>
-						      	<li class="collection-item">Officer Carlo<a href="#!" class="secondary-content" type="button" value="Click Me" onclick="getValue();"><img src="{!! URL::asset('../img/report.png') !!}" style="height:30px; width: 30px; margin-top: -5px;" class="secondary-content"></a></li>
-						      	<li class="collection-item">Manila City Hall</li>
+
+						      	
 						    </ul>
-
-
+						    <?php $dblTotalFine = 0?>
 							<ul class="collapsible" data-collapsible="accordion">
-
-
 								@foreach($ViolationDetails AS $detail)
+							
 								<li>
-								  <div class="collapsible-header"><span><h6 class="right">{{$detail->dblRuleFine}}</h6></span>{{$detail->strRuleDesc}}</div>
+								  <div class="collapsible-header"><span><h6 class="right">P{{number_format($detail->dblRuleFine)}}</h6></span>{{$detail->strRuleDesc}}</div>
 								  <div class="collapsible-body white"><p>Details.</p>
 								  </div>
 								</li>
+								<?php $dblTotalFine += $detail->dblRuleFine;?>
 								@endforeach
 
+
 							 </ul>
-							 <h6 class="right">Total Amount:</h6>
+							 <h5 class="right white">Total Amount: P <b>{{number_format($dblTotalFine)}}</b></h5>
 						</div>
 					</div> 
 				</div>
 				<div class="card-action center red darken-1">
-        			<a class="waves-effect waves-light btn red lighten-1" type="button" value="Click Me" onclick="getConfirmation();"><i class="material-icons left">payment</i>Bank</a>
-					<a class="waves-effect waves-light btn red lighten-1" id = 'btnSubmit'><i class="material-icons right">print</i>PDF</a>
+        			<a class="waves-effect waves-light btn red lighten-1 paywithbank" type="button" value="Click Me"><i class="material-icons left">payment</i>Pay with Bank</a>
         		</div>
 			</div>	    	
 	    </div>
-
 	    <div class="col s12 m4 l4">
             <table class="striped white" style="border-radius:10px;" id="dataTable">
                 <thead>
@@ -129,18 +145,27 @@
                         <th class="green white-text">Violation/s</th>
                     </tr>
                 </thead>
-
                 <tbody>
+                	@foreach($history AS $detail)
                 	<tr>
-                		<td>Feb. 11, 2014</td>
-                		<td>Tolentino</td>
-                		<td>Escala</td>
-                		<td>00002</td>
+                		<td>{{date('M j, Y h:i A',strtotime($detail->datToday))}}</td>
+                		<td>{{$detail->EnfoFullName}}</td>
+                		<td>P {{number_format($detail->dblRuleFine)}}</td>
+                		<td>{{$detail->strRuleDesc}}</td>
                 	</tr>
+                	@endforeach
                 </tbody>
             </table>	
 	    </div>
-
+	    <div class="hide">
+	        <form method="POST" action="{{ URL::to('/payment/add') }}" id="pay">
+	        	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+	            <input type="hidden" name="strDrivAccNo" value="{{$strDrivAccNo}}">
+	            <input type="hidden" name="strMunicipal" value="{{$strMunicipal}}">
+	            <input type="hidden" name="dblTotalFine" value="{{$dblTotalFine}}">
+	            <input type="hidden" name="intVHId" value="{{$intVHId}}">
+	        </form>
+	    </div>
 		<script type="text/javascript">
 		 $("#dataTable").DataTable({
 		                 "columns": [
@@ -168,19 +193,14 @@
 
 <script type="text/javascript">
  <!--
-    function getConfirmation(){
-       var retVal = confirm("Do you want to continue ?");
-       if( retVal == true ){
-          document.write ("User wants to continue!");
-          return true;
-       }
-       else{
-          document.write ("User does not want to continue!");
-           
-           document.location.href = "/dashboard";
-
-       }
-    }
+    $(document).on("click", ".paywithbank", function(){
+        var x = confirm("Are you sure you want to proceed?");
+        if (x){
+            document.getElementById('pay').submit();
+        }
+        else
+            return false;
+    });
  //-->
 </script>
 
