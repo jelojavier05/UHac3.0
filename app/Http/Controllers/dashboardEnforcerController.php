@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use DB;
 class dashboardEnforcerController extends Controller
 {
     /**
@@ -14,9 +14,16 @@ class dashboardEnforcerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('/dashboardEnforcer');
+
+        $id = $request->session()->get('id');
+        $name = DB::table('tblEnforcer')
+            ->select('*')
+            ->where('intEnfoId', $id)
+            ->first();
+        return view('/dashboardEnforcer')
+            ->with('name', $name);
     }
 
     /**
