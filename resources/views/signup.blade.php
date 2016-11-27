@@ -28,7 +28,7 @@
 	<div class="container caption center align">
       	<div class="row">
       		<br>
-        	<div class="col s12 m8 push-m6">
+        	<div class="col s12 m8 push-m2">
           		<div class="card" style="opacity: -10px;">
             		<div class="card-content white-text" style="border-radius: 100px;">
               			<span class="card-title"><img src="{!! URL::asset('../img/Hooleh.png') !!}" style="height: 100px ; width: auto ;"></span>

@@ -27,7 +27,7 @@
 
 	<div class="container caption center align">
       	<div class="row">
-        	<div class="col s12 m8 push-m6">
+        	<div class="col s12 m8 push-m2">
           		<div class="card" style="opacity: -10px;">
                     <div class="card-title">
                             <div class="valign-wrapper center-align">

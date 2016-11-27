@@ -27,8 +27,7 @@
 
 	<div class="container caption center">
       	<div class="row">
-      		<br>
-        	<div class="col s12 m6 push-m6">
+        	<div class="col s12 m6 push-m3">
           		<div class="card" style="opacity: -10px;">
                     
             		<div class="card-content white-text" style="border-radius: 100px;">
