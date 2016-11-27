@@ -71,6 +71,7 @@
             		</div>
             		<div class="card-action center">
 	            		<a class="waves-effect waves-light btn green lighten-1" id = 'btnSubmit'>Sign in</a>
+                  <a class="waves-effect waves-light btn blue lighten-1" id = 'btnSignUp'>Sign up</a>
             		</div>
           		</div>
         	</div>
@@ -79,6 +80,10 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
+    $('#btnSignUp').click(function(){
+      window.location.href = '{{ URL::to("/signup") }}';
+    });
+
     $('#btnSubmit').click(function(){
       var identifier = $('input[name=group1]:checked').val();
       if (identifier == 1){

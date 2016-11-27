@@ -90,7 +90,6 @@
 						    </div>
             		</div>
             		<div class="card-action center">
-	            		<a class="waves-effect waves-light btn red lighten-1"><i class="material-icons left">cancel</i>cancel</a>
 						<a class="waves-effect waves-light btn green lighten-1" id = 'btnSubmit'><i class="material-icons right">done</i>submit</a>
             		</div>
           		</div>
@@ -141,6 +140,7 @@
 					},
 					success: function(data){
 						confirm('success');
+						window.location.href = '{{ URL::to("/") }}';
 					},
 					error: function(data){
 						var toastContent = $('<span>Error Occured. </span>');

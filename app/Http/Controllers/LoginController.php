@@ -44,7 +44,7 @@ class LoginController extends Controller
     public function loginCompany(Request $request){
         $companyID = DB::table('tblMunicipal')
             ->select('intMunicipalId')
-            ->where('strUsername', $request->username)
+            ->where('strUsename', $request->username)
             ->where('strPassword', $request->password)
             ->first();
         if(is_null($companyID)){
